@@ -1,0 +1,204 @@
+Was there a gender inequality in the following fields during the 80s in Bulgaria (end of the communist period)?
+
+    Labour market
+    Household chores
+    Research and development
+
+1. Getting to know the Bulgarian Society trough statistics.
+
+TOWN - Distribuiton - (Sofia vs outskirts) vs more recent statistics
+FARMING - frequency vs today
+GENDER - frequency - distribution
+HH - frequency - median - mode - discriptive
+
+2. Education related statistics
+
+BOOKS - frequency  - compare to global average if avaiable now
+EDU - frequncy graph - compare to global average if avaiable now
+
+3. Labour market conditions
+
+WAGE - distribution
+OCCUPATION - distribution
+DIPLOMA_GAP - distribution
+WORK_CONDITOON & EDU - regression or eventual correlation ?? 
+
+4. Emphasis on influancable factors on the wage. Is there an egaliterian solution in solution to getting payed better for your work?
+     
+    WAGE & TOWN
+    WAGE & OCCUPATION
+    
+    WAGE & FARMING
+    WAGE & EDU
+    WAGE & DIPLOMA_GAP
+    WAGE & WORK_CONDITON
+
+    WAGE & BOOKS
+    WAGE & ARTS_ACT
+    WAGE & READING_ACT
+    WAGE & READING_ECON
+    WAGE & READING_POETRY
+
+
+5. Gender equality in the Labour market? Is there inequality or social factors play a role?
+
+    WAGE & GENDER 
+    OCCUPATION & GENDER
+
+    WORK_CONDITIONS & GENDER  
+    DIPLOMA_GAP & GENDER 
+
+    EDU & GENDER  
+    CAR & GENDER
+    ARTS_ACT & GENDER 
+
+
+Household chores
+
+    HOUSEHOLD_WORK & HH
+    HOUSEHOLD_WORK & TOWN
+    HOUSEHOLD WORK & OCUPATION
+
+
+    HOUSEHOLD_WORK & GENDER 
+    
+
+
+Research and development
+
+
+
+
+
+AGE - absoulte value
+ARTS_ACT - activities in the arts
+BIRTHDAYS - birthday celebration 1-4 sepctrume
+BOOKS - books in the householde
+CAR - having a car 1-4 spectrume 
+DIPLOMA_GAP - postion & diploma gaps for the work occupation
+DRINKING - driniking 1-6 (6 - drunk every day)
+EDU - education level 1-19
+ELECTRON_GAMES - electronic games 1-4 
+FARMING - activity of farming
+GENDER 
+HH- Household size
+HOUSEHOLD_WORK - 1-4 participation in work acitivites
+KASETOFON - speakers, audio system 1-4 (4 dosen't have it)
+MOVIES - watching them at cinema 1-5 
+MUSEUMS - number of vistts a year
+OCCUPATION - poitions - 1 manager - 5 unemployed
+OPERA - number of vists a year
+PC - having a personal computer
+POP_CONCERTS - number of vists a year
+RADIO - 1 frequently usage - 4 dosen't have it
+READING_ECON - 1 freq - 5 never
+READING_LIT - 1 freq - 5 never
+READING_POETRY - 1 freq - 5 never
+RESEARCH_ACT - 1- no acitivy and 2 R&D active persone
+SMOKING - num. of cigarets a day 
+SPORT - 1 freq - 5 never
+THEATRE - number of vists in the year 
+TOWN - 1 sofia - 5 other vilage
+TV -  1 Both colour and b&W - 4 no tv 
+VIDEO - video player - has it and uses it 1 - 4 dosen't have it
+WAGE - monthly wage
+WORK_CONDITIONS - 1 unempolyed - 6 excellent conditions 
+
+
+CHAT GPT PROMPT - IT IS KINDA MISSLEADING 
+Below are ready-to-use, concise analysis and interpretation templates organized by your three main topics, using only the variables you listed. Each item gives: which variables to report, what comparisons/hypotheses to make, what a meaningful result would imply, and short sentence templates you can copy into Results and Discussion (fill with your numbers).
+
+I. Labour market
+
+    Variables to use
+        Outcomes: WAGE, OCCUPATION, WORK_CONDITIONS, EMPLOYMENT (derive: OCCUPATION==5 → unemployed)
+        Controls/mediators: GENDER, EDU, AGE, TOWN, HH, DIPLOMA_GAP, CAR, PC, FARMING
+        Additional context: BOOKS, TV, RADIO as SES proxies
+
+    Descriptive comparisons
+        Report: mean/median WAGE by GENDER; distribution of OCCUPATION by GENDER; mean WORK_CONDITIONS by GENDER; EDU distribution by GENDER; share in Sofia vs villages by GENDER.
+        Hypotheses to test (simple language):
+            Men have higher mean wages than women.
+            Men are more represented in higher OCCUPATION categories (1–2), women more in lower categories (3–5).
+            Women report worse WORK_CONDITIONS on average.
+            Controlling for EDU, AGE, TOWN, HH, DIPLOMA_GAP, CAR, PC and FARMING will reduce but may not eliminate gender gaps.
+
+    Interpretation rules (how to read results)
+        If EDU_female ≥ EDU_male but WAGE_female < WAGE_male after controls → unequal returns to education; suggest structural barriers.
+        If OCCUPATION distribution explains most of the wage gap → occupational segregation is primary channel.
+        If DIPLOMA_GAP is higher for women and predicts lower WAGE → credential mismatch constrains women’s earnings.
+        If rural (TOWN>1) concentration explains gaps → spatial labor-market structure and mobility (CAR) matter.
+
+    Result sentence templates
+        Descriptive: "Median monthly wage was X for men and Y for women; the raw gender wage gap was Z%."
+        Occupation: "X% of men vs Y% of women occupied manager/senior roles (OCCUPATION 1–2), while Y% of women were unemployed (OCCUPATION 5)."
+        Adjusted: "After adjusting for EDU, AGE, TOWN, HH, DIPLOMA_GAP, CAR, PC and FARMING, the female wage coefficient was β (p = ), implying an adjusted gap of g%."
+        Mechanism: "Including OCCUPATION reduces the wage gap by Δ%, indicating occupational sorting explains a substantial share."
+
+II. Household chores
+
+    Variables to use
+        Outcomes: HOUSEHOLD_WORK (1–4 intensity)
+        Controls/mediators: GENDER, HH, AGE, OCCUPATION, WAGE, EDU, FARMING, CAR, PC, TOWN
+
+    Descriptive comparisons
+        Report: distribution of HOUSEHOLD_WORK by GENDER; median HOUSEHOLD_WORK by HH size; cross-tab HOUSEHOLD_WORK × OCCUPATION.
+        Hypotheses:
+            Women report higher HOUSEHOLD_WORK intensity than men.
+            Larger HH and presence of FARMING associate with higher HOUSEHOLD_WORK.
+            High household burden correlates with lower WAGE and lower-status OCCUPATION, particularly for women.
+
+    Interpretation rules
+        If women do substantially more household work and that variable predicts lower WAGE or higher probability of lower OCCUPATION, treat household burden as a mechanism for labour-market inequality.
+        If CAR or PC ownership is associated with lower HOUSEHOLD_WORK and higher female labour-market outcomes, treat assets as mitigating factors.
+
+    Result sentence templates
+        Descriptive: "X% of women vs Y% of men reported high household-work intensity (HOUSEHOLD_WORK=4). Median household size was M; among households with >M members, the share reporting high household work rose to S%."
+        Link to labour market: "Respondents with high household-work intensity earned on average Z% less and were more likely to be in lower OCCUPATION categories; the pattern was stronger for women."
+
+III. Research and development (R&D)
+
+    Variables to use
+        Outcomes: RESEARCH_ACT (1=no, 2=yes)
+        Controls/mediators: GENDER, EDU, AGE, OCCUPATION, TOWN, PC, BOOKS, DIPLOMA_GAP, WORK_CONDITIONS
+
+    Descriptive comparisons
+        Report: share R&D-active by GENDER; R&D share by EDU and TOWN (Sofia vs others); average PC and BOOKS among R&D-active persons by GENDER.
+        Hypotheses:
+            Men are more likely to be RESEARCH_ACT=2 than women.
+            Higher EDU and Sofia residence increase probability of R&D activity.
+            After controlling for EDU, OCCUPATION, PC and BOOKS, a residual gender gap indicates institutional barriers.
+
+    Interpretation rules
+        If EDU-equal women have significantly lower R&D participation → evidence of exclusion or unequal pipeline progression.
+        If RESEARCH_ACT concentrated in Sofia and women are underrepresented in Sofia-based occupations, emphasize spatial/institutional barriers.
+
+    Result sentence templates
+        Descriptive: "Overall, X% of respondents were R&D-active: Y% of men vs Z% of women."
+        Adjusted: "Controlling for EDU, OCCUPATION, AGE, TOWN, PC and BOOKS, women had an adjusted odds ratio of OR (95% CI) for R&D activity compared to men."
+        Mechanism: "DIPLOMA_GAP and lack of PC access explained part of the gender difference; an unexplained residual suggests institutional constraints."
+
+IV. Cross-domain synthesis and conclusions
+
+    Comparative logic
+        Report three summary facts: (a) raw gender gaps in WAGE/OCCUPATION/RESEARCH_ACT/HOUSEHOLD_WORK, (b) how much each gap shrinks after adjusting for EDU, OCCUPATION, HOUSEHOLD variables, TOWN, and assets (CAR/PC/BOOKS), (c) what residuals remain.
+        Use Oaxaca–Blinder style language even if not performing exact decomposition: "X% of the raw wage gap is explained by observable factors; the remaining Y% is unexplained."
+
+    Final interpretation templates
+        If substantial unexplained residuals across domains: "Women in late-1980s Bulgaria faced persistent disadvantages in pay, occupational status, and R&D participation that are not fully accounted for by education, household composition, location, or assets — suggesting structural barriers and unequal returns to qualifications."
+        If gaps largely explained by household and spatial variables: "Gender differences in labour-market outcomes largely reflect household-care burdens and spatial/sectoral distributions; policies easing care responsibilities and decentralizing R&D could reduce inequality."
+        Emphasize links: "Unequal household-work burden helps reproduce occupational segregation, which in turn depresses wages and reduces women’s access to R&D roles."
+
+V. Practical checklist for writing Results (use these lines and insert your figures)
+
+    Start with sample profile: "Sample size N; share female = F%; mean age = A; share in Sofia = S%."
+    Labour market block: present a small table (or sentences) with median WAGE by gender, OCCUPATION shares, mean EDU by gender, mean DIPLOMA_GAP by gender.
+    Household chores block: present HOUSEHOLD_WORK distribution by gender and HH size; link to WAGE/OCCUPATION.
+    R&D block: present RESEARCH_ACT shares by gender and EDU; show PC/BOOKS differences.
+    Adjusted results: report one sentence per domain summarizing the adjusted gender effect (e.g., adjusted wage gap, adjusted odds ratio for R&D, adjusted odds for high household work).
+    Conclude with one short paragraph summarizing mechanisms and policy implications.
+
+If you want, I can now:
+
+    Generate exact one-paragraph Result drafts for each domain with placeholders (X, Y, β, OR) you can replace with your estimates, or
+    Create brief table captions and figure captions matched to the variables above. Which do you prefer?
