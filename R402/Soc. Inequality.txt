@@ -32,12 +32,27 @@ pretty normal distribution - descriptive statistic
 2. Education related statistics
 
 BOOKS - frequency  - compare to global average if avaiable now
+
 EDU - frequncy graph - compare to global average if avaiable now
 
 3. Labour market conditions
 
 WAGE - distribution
+Mean                         164.26
+  Median                       158.00
+  Minimum                      0.0000
+  Maximum                      9997.0
+  Standard deviation           143.00
+  C.V.                        0.87056
+  Skewness                     33.559
+  Ex. kurtosis                 2196.6
+  5% percentile                0.0000
+  95% percentile               320.30
+  Interquartile range          128.00
+  Missing obs.                      0
+
 OCCUPATION - distribution
+
 DIPLOMA_GAP - distribution
 WORK_CONDITOON & EDU - regression or eventual correlation ?? 
 
