@@ -7,52 +7,19 @@ Was there a gender inequality in the following fields during the 80s in Bulgaria
 1. Getting to know the Bulgarian Society trough statistics.
 
 TOWN - Distribuiton - (Sofia vs outskirts) vs more recent statistics
-TODAY - https://www.citypopulation.de/en/bulgaria/admin/ - 4744111 cities (73.7%$) vs 1693249 rural (26.3%) - https://www.citypopulation.de/en/bulgaria/admin/
-
-
+FARMING - frequency vs today
 GENDER - frequency - distribution
- 54.13% - 45.87 vs 52.24%   - 47.59% (today) - https://www.nsi.bg/en/statistical-data/206/648
-
 HH - frequency - median - mode - discriptive
-pretty normal distribution - descriptive statistic
-  Mean                         3.7609
-  Median                       4.0000
-  Minimum                      1.0000
-  Maximum                      21.000
-  Standard deviation           1.6919
-  C.V.                        0.44987
-  Skewness                     1.0185
-  Ex. kurtosis                 4.0365
-  5% percentile                1.0000
-  95% percentile               7.0000
-  Interquartile range          3.0000
-  Missing obs.                      0
-
 
 2. Education related statistics
 
 BOOKS - frequency  - compare to global average if avaiable now
-
 EDU - frequncy graph - compare to global average if avaiable now
 
 3. Labour market conditions
 
 WAGE - distribution
-Mean                         164.26
-  Median                       158.00
-  Minimum                      0.0000
-  Maximum                      9997.0
-  Standard deviation           143.00
-  C.V.                        0.87056
-  Skewness                     33.559
-  Ex. kurtosis                 2196.6
-  5% percentile                0.0000
-  95% percentile               320.30
-  Interquartile range          128.00
-  Missing obs.                      0
-
 OCCUPATION - distribution
-
 DIPLOMA_GAP - distribution
 WORK_CONDITOON & EDU - regression or eventual correlation ?? 
 
