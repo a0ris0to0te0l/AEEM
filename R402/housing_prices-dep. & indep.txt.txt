@@ -1,0 +1,80 @@
+House Price Index (dependent): reflects the outcome variable — nominal quarterly residential property prices (2015 = 100). Use the real version (deflated by the price index) to capture purchasing‑power adjusted price movements; alternately model nominal prices but control for inflation.
+
+Gross domestic product per capita: acts as an income and demand driver. Higher GDP per person raises households’ ability to buy and borrow, increases investment demand for housing, and supports construction activity; expect a positive effect on house prices with both contemporaneous and lagged impacts.
+
+Persons outside the labour force (share): acts as a labour‑market and demographic constraint on demand. A larger share outside the labour force reduces the proportion of earners and creditworthy buyers, tending to lower aggregate housing demand (negative effect), though demographic composition (older households, retirees) can change the type and location of housing demand.
+
+Employment in foreign controlled enterprises: serves as a localized higher‑quality employment and income channel. Foreign‑controlled firms often pay higher wages and attract skilled workers, raising local housing demand and prices where such firms concentrate (positive, spatially heterogeneous effect).
+
+Employment in foreign affiliates of domestic enterprises: similar to the previous variable — indicates jobs created through outward foreign affiliate activity that may reflect multinational linkages and income creation, supporting local demand for housing; effect likely positive but potentially sector‑ and region‑specific.
+
+Price level index (consumer price index or national price level): captures general inflation and cost‑of‑living. For nominal house prices it explains inflationary movements; for real house prices it is used to deflate nominal series. Inflation affects replacement costs (construction materials, wages) and monetary policy (interest rates), so it can indirectly influence real housing dynamics.
+
+European Currency Unit/Euro–national exchange rate (bilateral) and real effective exchange rate: act through multiple channels. Currency depreciation (a higher domestic currency per Euro) raises import prices and inflation, increases construction costs, and can prompt monetary tightening (higher mortgage rates) — which may lower real demand. Conversely, depreciation makes domestic property cheaper for Euro‑denominated foreign buyers (positive demand effect). Use both bilateral and real effective rates, include lags, and consider interactions with foreign‑buyer activity to capture net effects.
+
+Conceptual links (dependent: House Price Index; independents listed)
+
+Gross Domestic Product per capita (nama_10_pc)
+Concept: higher GDP per capita increases income and creditworthiness → higher demand for housing → higher house prices.
+Mechanisms: income effect, credit expansion, investment demand, multiplier effects on construction costs.
+Sign and timing: positive contemporaneous effect; lagged effects likely (quarters).
+GDP main components (if separately considered: consumption, investment, government, net exports)
+Concept: consumption and investment (especially residential investment) directly affect housing demand and supply; government spending/taxation affects affordability; net exports affect aggregate income.
+Mechanisms: demand channel for consumption; construction activity for investment.
+Sign: consumption/investment positive; public policy ambiguous.
+Persons outside the labour force (% of population, lfsa_ipga)
+Concept: higher share outside labour force reduces effective demand for housing (fewer earners), may lower prices; but could indicate aging population increasing demand for smaller units, affecting composition.
+Mechanisms: income/credit constraints, demographic shifts, pension income patterns.
+Sign: likely negative on prices overall, though composition/age effects can produce mixed outcomes.
+Employment in Foreign Controlled Enterprises (egi_em1) & Foreign Affiliates of Domestic Enterprises (egi_em2)
+Concept: these reflect FDI-driven employment and higher-wage jobs in certain regions/sectors → localized income gains and housing demand, and expectations about future growth.
+Mechanisms: localized demand increases, upward pressure on rents and prices, amenities/investment-led neighborhood change.
+Sign: positive, potentially strong in areas with concentrated foreign enterprise activity; effects may be spatially heterogeneous.
+Price level indices (tec00120)
+Concept: general inflation / price level influences nominal house prices. Real house-price dynamics require deflation by a price index; nominal house-price increases may largely reflect inflation.
+Mechanisms: monetary policy, real interest rates, replacement cost increases.
+Sign: positive for nominal HPI; for real HPI you'd adjust HPI by this index.
+Empirical analysis approach (quarterly panel/time series)
+Data preparation
+Convert all series to consistent frequency (quarterly) and align dates.
+Use real house price series: RealHPI = HPI / PriceLevelIndex (or deflate GDP similarly).
+Convert GDP and HPI to per-capita / real terms; take logs to stabilize variance and interpret coefficients as elasticities: ln(RealHPI), ln(GDPpc_real), ln(PriceLevel) only if modeling nominal HPI.
+Seasonally adjust if necessary.
+Consider regional heterogeneity: if data are cross-section by region/country, use panel methods; if national aggregate, use time series.
+Stationarity & integration
+Test each series for unit roots (ADF, KPSS). House prices and GDP often I(1).
+If nonstationary, consider: first differences, cointegration, or error-correction models (ECM).
+Cointegration / long-run relationships
+If variables are I(1), test for cointegration (Engle-Granger, Johansen for multivariate).
+If cointegrated, estimate long-run coefficients (e.g., Johansen VECM) and short-run dynamics (ECM terms).
+Model specifications
+Simple OLS on levels (if stationary or cointegrated) for long-run elasticities: ln(HPI_t) = α + β1 ln(GDPpc_t) + β2 lfsa_ipga_t + β3 egi_em1_t + β4 egi_em2_t + ε_t
+Error-Correction Model (if cointegrated): Δln(HPI_t) = γ + λ*(ln(HPI_{t-1}) – β'X_{t-1}) + Σφ ΔX_{t-j} + u_t
+VAR / VECM for dynamic interactions and impulse responses if bidirectional causality suspected.
+Panel models (fixed/random effects) if cross-sectional units available; include time fixed effects and region fixed effects. For heterogeneous slopes, use Mean Group / Common Correlated Effects estimators.
+Control for interest rates, credit conditions, housing supply (construction permits), unemployment, lending standards — include if available.
+Endogeneity & identification
+Likely endogeneity (GDP ↔ house prices, employment ↔ prices). Use:
+Instrumental variables (IV) with valid instruments (e.g., lagged external demand, sectoral shocks, policy changes).
+Structural VAR with sign or narrative restrictions.
+Difference-GMM or system-GMM for panel dynamics.
+Local projections for impulse responses with external shocks.
+Heterogeneity & spatial effects
+Test for spatial spillovers: spatial lag models (SAR, spatial Durbin) or include region-specific foreign employment shares.
+Interact foreign employment variables with regional dummies or urbanization indicators.
+Robustness checks
+Alternate dependent variable: real vs nominal HPI, HPI growth rates, price-to-income or price-to-rent ratios.
+Lag lengths, sample splits (pre/post-crisis), sub-sample by region, alternative deflators.
+Test for structural breaks (Bai-Perron) around crises/policy changes.
+Interpretation
+Report long-run elasticities (if cointegrated) and short-run effects (ECM). Emphasize economic significance (percentage change in HPI per 1% change in GDPpc).
+For employment variables, translate coefficient into local price effects given employment share changes.
+Discuss limitations: omitted variables (credit, interest rates), measurement error, spatial aggregation bias, endogeneity.
+Example concise empirical strategy (recommended)
+Construct quarterly panel of real ln(HPI) and ln(GDPpc_real), lfsa_ipga, egi_em1, egi_em2, plus CPI for checks.
+Test I(1); if cointegrated → estimate Johansen VECM with country fixed effects (if panel cross-sections) or single-country VECM.
+Estimate long-run coefficients from VECM; short-run via ECM. Use instruments (lagged trade shocks or commodity price shocks) to address endogeneity.
+Run robustness: VAR impulse responses, spatial Durbin model, alternative deflators, sample splits.
+
+IDEA
+Household size.

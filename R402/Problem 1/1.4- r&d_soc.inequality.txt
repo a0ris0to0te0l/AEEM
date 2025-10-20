@@ -1,0 +1,338 @@
+Varibales to test - TAB are not related
+
+AGE - absoulte value
+ARTS_ACT - activities in the arts
+BIRTHDAYS - birthday celebration 1-4 sepctrume
+BOOKS - books in the householde
+CAR - having a car 1-4 spectrume 
+DIPLOMA_GAP - postion & diploma gaps for the work occupation
+DRINKING - driniking 1-6 (6 - drunk every day)
+EDU - education level 1-19
+ELECTRON_GAMES - electronic games 1-4 
+FARMING - activity of farming
+GENDER 
+	HH- Household size
+	HOUSEHOLD_WORK - 1-4 participation in work acitivites
+KASETOFON - speakers, audio system 1-4 (4 dosen't have it)
+MOVIES - watching them at cinema 1-5 
+MUSEUMS - number of vistts a year
+OCCUPATION - poitions - 1 manager - 5 unemployed
+OPERA - number of vists a year
+PC - having a personal computer
+POP_CONCERTS - number of vists a year
+RADIO - 1 frequently usage - 4 dosen't have it
+READING_ECON - 1 freq - 5 never
+READING_LIT - 1 freq - 5 never
+READING_POETRY - 1 freq - 5 never
+	RESEARCH_ACT - 1- no acitivy and 2 R&D active persone
+SMOKING - num. of cigarets a day 
+SPORT - 1 freq - 5 never
+THEATRE - number of vists in the year 
+TOWN - 1 sofia - 5 other vilage
+TV -  1 Both colour and b&W - 4 no tv 
+VIDEO - video player - has it and uses it 1 - 4 dosen't have it
+WAGE - monthly wage
+WORK_CONDITIONS - 1 unempolyed - 6 excellent conditions 
+
+Recategory
+
+Depended variable we test on: 
+RESEARCH_ACT - 1- no acitivy and 2 R&D active persone
+
+Independent values:
+
+0. Nominal: (4)
+	AGE - absoulte value
+	GENDER
+	EDU - education level 1-19
+	TOWN - 1 sofia - 5 other vilage
+
+
+0.1 MODEL - wo. EDU
+
+	--- Iteration
+   	1: loglikelihood -5532.42807919 (step 1, norm 5.90e+01)
+   	2: loglikelihood -5384.11719292 (step 1, norm 1.33e+01)
+   	3: loglikelihood -5380.86863816 (step 1, norm 7.78e+00)
+   	4: loglikelihood -5380.86438841 (step 1, norm 1.68e+00)
+   	5: loglikelihood -5380.86438840 (step 1, norm 6.63e-02)
+	--- FINAL VALUES:
+	loglikelihood -5380.86438840 (step 1, norm 9.52e-05)
+
+	Successive criterion values within tolerance (1e-08)
+
+	Model 1: Logit, using observations 1-10333	
+	Dependent variable: RESEARCH_ACT
+	QML standard errors
+
+	             coefficient   std. error     z       p-value 
+  		--------------------------------------------------------
+  	const       2.48436      0.0847700     29.31   8.43e-189 ***
+  	TOWN       −0.516035     0.0168221    −30.68   1.19e-206 ***
+ 	 AGE        −0.0451770    0.00147600   −30.61   9.68e-206 ***
+  	GENDER      0.721634     0.0477987     15.10   1.69e-51  ***
+
+	Mean dependent var   0.338817   S.D. dependent var   0.473331
+	McFadden R-squared   0.186650   Adjusted R-squared   0.186045
+	Log-likelihood      −5380.864   Akaike criterion     10769.73
+	Schwarz criterion    10798.70   Hannan-Quinn         10779.52
+
+	Number of cases 'correctly predicted' = 7446 (72.1%)
+	f(beta'x) at mean of independent vars = 0.205
+	Likelihood ratio test: Chi-square(3) = 2469.64 [0.0000]
+
+	           Predicted
+	               0      1
+	  Actual 0  5762   1070
+	         1  1817   1684
+
+		
+    Accuracy: 72.06%
+    Precision: 61.15%
+    Recall: 48.10%
+    F1: 53.84%
+
+
+1.Leasure activites: (10)
+	ARTS_ACT - activities in the arts
+	BIRTHDAYS - birthday celebration 1-4 sepctrume
+	DRINKING - driniking 1-6 (6 - drunk every day)
+	MOVIES - watching them at cinema 1-5 
+	MUSEUMS - number of vistts a year
+	OPERA - number of vists a year
+	POP_CONCERTS - number of vists a year
+	SMOKING - num. of cigarets a day 
+	SPORT - 1 freq - 5 never
+	THEATRE - number of vists in the year
+	
+
+1.1 MODEL - wo. POP CONCERTS
+	--- Iteration
+	   1: loglikelihood -4980.72891170 (step 1, norm 4.76e+01)
+	   2: loglikelihood -4834.00353217 (step 1, norm 9.04e+00)
+	   3: loglikelihood -4830.01385896 (step 1, norm 6.05e+00)
+	   4: loglikelihood -4830.00675274 (step 1, norm 1.36e+00)
+	   5: loglikelihood -4830.00675271 (step 1, norm 6.24e-02)
+	   6: loglikelihood -4830.00675271 (step 1, norm 1.24e-04)
+	--- FINAL VALUES:
+	loglikelihood -4830.00675271 (step 1, norm 1.17e-06)
+
+	Gradient within tolerance (1e-07)
+
+	Model 4: Logit, using observations 1-10333
+	Dependent variable: RESEARCH_ACT
+	Standard errors based on Hessian
+
+	              coefficient   std. error      z      p-value 
+	  ---------------------------------------------------------
+	  const        3.06154      0.188851      16.21    4.19e-59 ***
+	  ARTS_ACT     0.435908     0.0519914      8.384   5.11e-17 ***
+	  BIRTHDAYS   −0.397444     0.0221446    −17.95    5.00e-72 ***
+	  DRINKING     0.0556651    0.0236855      2.350   0.0188   **
+	  MOVIES      −0.470293     0.0228838    −20.55    7.48e-94 ***
+	  MUSEUMS      0.0262986    0.00690834     3.807   0.0001   ***
+	  OPERA        0.0261868    0.0162658      1.610   0.1074  
+	  SMOKING      0.00913544   0.00277012     3.298   0.0010   ***
+	  SPORT       −0.507597     0.0298325    −17.01    6.36e-65 ***
+	  THEATRE      0.172299     0.0134849     12.78    2.20e-37 ***
+
+	Mean dependent var   0.338817   S.D. dependent var   0.473331
+	McFadden R-squared   0.269916   Adjusted R-squared   0.268404
+	Log-likelihood      −4830.007   Akaike criterion     9680.014
+	Schwarz criterion    9752.444   Hannan-Quinn         9704.491
+
+	Number of cases 'correctly predicted' = 8022 (77.6%)
+	f(beta'x) at mean of independent vars = 0.207
+	Likelihood ratio test: Chi-square(9) = 3571.35 [0.0000]
+
+	           Predicted
+	               0      1
+	  Actual 0  6015    817
+	         1  1494   2007
+
+	Excluding the constant, p-value was highest for variable 18 (OPERA)
+
+    
+    Accuracy: 77.63%
+    Precision: 71.07%
+    Recall: 57.33%
+    F1: 63.46%
+
+
+
+2.Appliances connected with R&D (8)
+	BOOKS - books in the householde
+	KASETOFON - speakers, audio system 1-4 (4 dosen't have it)
+	ELECTRON_GAMES - electronic games 1-4
+	RADIO - 1 frequently usage - 4 dosen't have it
+	TV -  1 Both colour and b&W - 4 no tv
+	VIDEO - video player - has it and uses it 1 - 4 dosen't have it
+	PC - having a personal computer
+	CAR - having a car 1-4 spectrume
+
+
+2.1 MODEL wo. PC, ELECTRONIC_GAMES
+
+	--- Iteration
+	   1: loglikelihood -5645.09199176 (step 1, norm 3.56e+01)
+	   2: loglikelihood -5589.89764729 (step 1, norm 7.41e+00)
+	   3: loglikelihood -5589.46795717 (step 1, norm 2.15e+00)
+	   4: loglikelihood -5589.46732063 (step 0.03125, norm 2.53e-01)
+	   5: loglikelihood -5589.46724362 (step 0.00390625, norm 2.49e-01)
+	   6: loglikelihood -5589.46722438 (step 0.000976562, norm 2.49e-01)
+	   7: loglikelihood -5589.46721463 (step 0.000488281, norm 2.49e-01)
+	   8: loglikelihood -5589.46721007 (step 0.000244141, norm 2.49e-01)
+	   9: loglikelihood -5589.46720748 (step 0.00012207, norm 2.49e-01)
+	  10: loglikelihood -5589.46720745 (step 7.62939e-06, norm 2.49e-01)
+	  11: loglikelihood -5589.46720737 (step 1.90735e-06, norm 2.49e-01)
+	  12: loglikelihood -5589.46891527 (step 9.53674e-07, norm 2.49e-01)
+	--- FINAL VALUES:
+	loglikelihood -5589.46891527 (step 9.53674e-07, norm 2.49e-01)
+
+	Warning: couldn't improve criterion (gradient = 112.207)
+
+	Model 6: Logit, using observations 1-10333
+	Dependent variable: RESEARCH_ACT
+	QML standard errors
+
+	              coefficient   std. error       z       p-value 
+	  -----------------------------------------------------------
+	  const        0.176544     0.402824        0.4383   0.6612  
+	  BOOKS        0.00315822   0.000398353     7.928    2.22e-15 ***
+	  KASETOFON   −0.196643     0.0185756     −10.59     3.46e-26 ***
+	  RADIO       −0.116874     0.0210399      −5.555    2.78e-08 ***
+	  TV          −0.304555     0.0372933      −8.166    3.17e-16 ***
+	  VIDEO        0.195224     0.0947190       2.061    0.0393   **
+	  CAR         −0.168062     0.0184414      −9.113    7.99e-20 ***
+
+	Mean dependent var   0.338817   S.D. dependent var   0.473331
+	McFadden R-squared   0.155118   Adjusted R-squared   0.154060
+	Log-likelihood      −5589.469   Akaike criterion     11192.94
+	Schwarz criterion    11243.64   Hannan-Quinn         11210.07
+
+	Number of cases 'correctly predicted' = 7601 (73.6%)
+	f(beta'x) at mean of independent vars = 0.222
+	Likelihood ratio test: Chi-square(6) = 2052.43 [0.0000]
+
+	           Predicted
+	               0      1
+	  Actual 0  6183    649
+	         1  2083   1418
+    
+    
+    Accuracy: 73.56%
+    Precision: 68.66%
+    Recall: 40.45%
+    F1: 50.93%
+
+
+
+3. Work related factors (5)
+	WAGE - monthly wage
+	FARMING - activity of farming
+	OCCUPATION - poitions - 1 manager - 5 unemployed
+	WORK_CONDITIONS - 1 unempolyed - 6 excellent conditions
+	DIPLOMA_GAP - postion & diploma gaps for the work occupation
+
+
+3.1 MODEL wo. OCUPATION
+	--- Iteration
+	   1: loglikelihood -5715.71654144 (step 1, norm 3.99e+01)
+	   2: loglikelihood -5663.28892712 (step 1, norm 9.32e+00)
+	   3: loglikelihood -5663.09977472 (step 1, norm 2.18e+00)
+	   4: loglikelihood -5663.09976563 (step 1, norm 1.81e-01)
+	   5: loglikelihood -5663.09976563 (step 1, norm 1.40e-03)
+	--- FINAL VALUES:
+	loglikelihood -5663.09976563 (step 1, norm 8.78e-07)
+
+	Gradient within tolerance (1e-07)
+
+	Model 9: Logit, using observations 1-10333
+	Dependent variable: RESEARCH_ACT
+	Standard errors based on Hessian
+
+	                    coefficient   std. error       z       p-value 
+	  -----------------------------------------------------------------
+	  const             −0.449225     0.110342       −4.071   4.68e-05  ***
+	  FARMING            0.178109     0.0159226      11.19    4.78e-29  ***
+	  WORK_CONDITIONS    0.136147     0.0155589       8.750   2.13e-18  ***
+	  DIPLOMA_GAP       −0.283868     0.0109860     −25.84    3.22e-147 ***
+	  WAGE               0.00101428   0.000243869     4.159   3.19e-05  ***
+
+	Mean dependent var   0.338817   S.D. dependent var   0.473331
+	McFadden R-squared   0.143989   Adjusted R-squared   0.143233
+	Log-likelihood      −5663.100   Akaike criterion     11336.20
+	Schwarz criterion    11372.42   Hannan-Quinn         11348.44
+
+	Number of cases 'correctly predicted' = 7576 (73.3%)
+	f(beta'x) at mean of independent vars = 0.215
+	Likelihood ratio test: Chi-square(4) = 1905.16 [0.0000]
+
+	           Predicted
+	               0      1
+	  Actual 0  5794   1038
+	         1  1719   1782
+
+	
+    Accuracy: 73.32%
+    Precision: 63.19%
+    Recall: 50.90%
+    F1: 56.38%
+         
+
+
+4. Reading (3)
+	READING_ECON - 1 freq - 5 never
+	READING_LIT - 1 freq - 5 never
+	READING_POETRY - 1 freq - 5 never
+
+
+4.1 MODEL
+	--- Iteration
+	   1: loglikelihood -4597.51030943 (step 1, norm 1.10e+02)
+	   2: loglikelihood -4418.81331951 (step 1, norm 1.71e+01)
+	   3: loglikelihood -4414.37742837 (step 1, norm 1.45e+01)
+	   4: loglikelihood -4414.36811859 (step 1, norm 3.20e+00)
+	   5: loglikelihood -4414.36811854 (step 1, norm 1.55e-01)
+	   6: loglikelihood -4414.36811854 (step 1, norm 3.55e-04)
+	--- FINAL VALUES:
+	loglikelihood -4414.36811854 (step 1, norm 3.57e-06)
+
+	Gradient within tolerance (1e-07)
+
+	Model 10: Logit, using observations 1-10333
+	Dependent variable: RESEARCH_ACT
+	Standard errors based on Hessian
+
+	                   coefficient   std. error     z       p-value 
+	  --------------------------------------------------------------
+	  const              7.08413     0.229522      30.86   3.55e-209 ***
+	  READING_ECON      −1.03487     0.0463538    −22.33   2.10e-110 ***
+	  READING_LIT       −0.629074    0.0213427    −29.47   6.05e-191 ***
+	  READING_POETRY    −0.271960    0.0233081    −11.67   1.86e-31  ***
+
+	Mean dependent var   0.338817   S.D. dependent var   0.473331
+	McFadden R-squared   0.332742   Adjusted R-squared   0.332137
+	Log-likelihood      −4414.368   Akaike criterion     8836.736
+	Schwarz criterion    8865.709   Hannan-Quinn         8846.527
+
+	Number of cases 'correctly predicted' = 8283 (80.2%)
+	f(beta'x) at mean of independent vars = 0.210
+	Likelihood ratio test: Chi-square(3) = 4402.63 [0.0000]
+
+	           Predicted
+	               0      1
+	  Actual 0  6123    709
+	         1  1341   2160
+
+
+
+    Accuracy: 80.16%
+    Precision: 75.29%
+    Recall: 61.70%
+    F1: 67.82%
+
+
+
+
+	 
