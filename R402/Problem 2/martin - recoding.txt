@@ -1,0 +1,3 @@
+series wc_new = @recode(work_conditions=1, NA, work_conditions)
+wc_new = @recode(wc_new=2,1, @recode(wc_new=3,2, @recode(wc_new=4,3, @recode(wc_new=5,4, @recode(wc_new=6,5, wc_new)))))
+age_c=age-@mean(age,"1 10333 if age>=25 and age<=60")
