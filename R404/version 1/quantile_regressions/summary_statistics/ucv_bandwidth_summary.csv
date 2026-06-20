@@ -1,0 +1,5 @@
+"period","ucv_bandwidth","nrd0_bandwidth","ucv_status","lower_bound","upper_bound","manual_ucv"
+"daily",2171.16,297.834097055705,"Interior search successful",60.31,2412.4,TRUE
+"weekly",2169.72,405.889274748745,"Interior search successful",60.27,2410.8,TRUE
+"monthly",2165.76,547.27934735267,"Interior search successful",60.16,2406.4,TRUE
+"yearly",2099.88,941.362452818314,"Interior search successful",58.33,2333.2,TRUE
