@@ -1,0 +1,45 @@
+\contentsline {section}{\numberline {1}Introduction}{3}{}%
+\contentsline {section}{\numberline {2}Base Dataset \& Data Manipulation}{4}{}%
+\contentsline {subsection}{\numberline {2.1}Size Type}{4}{}%
+\contentsline {subsubsection}{\numberline {2.1.1}Base size type}{4}{}%
+\contentsline {subsubsection}{\numberline {2.1.2}Modifications to Size Type}{5}{}%
+\contentsline {subsection}{\numberline {2.2}Neighborhood}{5}{}%
+\contentsline {subsubsection}{\numberline {2.2.1}Quartid- base dataset}{5}{}%
+\contentsline {subsubsection}{\numberline {2.2.2}Neighborhood - management}{5}{}%
+\contentsline {subsubsection}{\numberline {2.2.3}Neighborhood Location \& Proximity to the Center}{6}{}%
+\contentsline {subsubsection}{\numberline {2.2.4}Metro Availability}{7}{}%
+\contentsline {subsubsection}{\numberline {2.2.5}Luxurious Locations}{7}{}%
+\contentsline {subsubsection}{\numberline {2.2.6}Attractive Park Proximity}{8}{}%
+\contentsline {subsubsection}{\numberline {2.2.7}Kindergarten Availability}{8}{}%
+\contentsline {subsubsection}{\numberline {2.2.8}Shopping Malls}{9}{}%
+\contentsline {subsubsection}{\numberline {2.2.9}Other possible variables}{9}{}%
+\contentsline {subsection}{\numberline {2.3}Price (in Euro)}{9}{}%
+\contentsline {subsubsection}{\numberline {2.3.1}Base dataset for the Price variable}{9}{}%
+\contentsline {subsubsection}{\numberline {2.3.2}Modifications on the Price variable}{10}{}%
+\contentsline {subsection}{\numberline {2.4}Area}{10}{}%
+\contentsline {subsubsection}{\numberline {2.4.1}Area - management}{11}{}%
+\contentsline {subsection}{\numberline {2.5}Euros per Square Meter}{11}{}%
+\contentsline {subsubsection}{\numberline {2.5.1}Euros per Square Meter - Base dataset}{11}{}%
+\contentsline {subsubsection}{\numberline {2.5.2}Euros per Square Meter - Management}{12}{}%
+\contentsline {subsection}{\numberline {2.6}Construction type}{14}{}%
+\contentsline {subsubsection}{\numberline {2.6.1}Base dataset - Construction type variable}{14}{}%
+\contentsline {subsection}{\numberline {2.7}Year}{15}{}%
+\contentsline {subsubsection}{\numberline {2.7.1}Base dataset - Year}{15}{}%
+\contentsline {subsubsection}{\numberline {2.7.2}Year - management}{16}{}%
+\contentsline {subsection}{\numberline {2.8}Floor}{16}{}%
+\contentsline {subsection}{\numberline {2.9}Heating}{17}{}%
+\contentsline {subsection}{\numberline {2.10}Listing time}{18}{}%
+\contentsline {section}{\numberline {3}Regressions \& Model}{19}{}%
+\contentsline {subsection}{\numberline {3.1}Structure of the Model}{19}{}%
+\contentsline {subsection}{\numberline {3.2}Logit Regressions for Overpriced \& Underpriced}{19}{}%
+\contentsline {subsubsection}{\numberline {3.2.1}Overpriced formula}{20}{}%
+\contentsline {subsubsection}{\numberline {3.2.2}Overpriced regression}{20}{}%
+\contentsline {subsubsection}{\numberline {3.2.3}Underpriced formula}{21}{}%
+\contentsline {subsubsection}{\numberline {3.2.4}Underpriced regression}{21}{}%
+\contentsline {subsubsection}{\numberline {3.2.5}Disclosure of limitations of the models}{22}{}%
+\contentsline {subsubsection}{\numberline {3.2.6}Summary for Logit regressions}{23}{}%
+\contentsline {subsection}{\numberline {3.3}Structural Model Regression versus Non-Structural Model Regression}{23}{}%
+\contentsline {subsubsection}{\numberline {3.3.1}Specification differences}{23}{}%
+\contentsline {subsubsection}{\numberline {3.3.2}Econometric problems}{24}{}%
+\contentsline {subsubsection}{\numberline {3.3.3}Summary}{25}{}%
+\contentsline {section}{\numberline {4}Conclusion}{26}{}%
