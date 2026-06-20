@@ -1,0 +1,275 @@
+\documentclass{beamer} % Use handout to get rid of repeated slides
+\usetheme{AnnArbor}
+\usecolortheme{default}
+\usefonttheme{professionalfonts}
+\usepackage{mathpazo}
+\usepackage{cancel}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{etoolbox}
+
+% Define colors
+\definecolor{myred}{RGB}{163,0,0}
+\definecolor{ttcolor}{RGB}{0,0,1}%{Rdenz1000GB}{163,0,0}
+\definecolor{mygray}{RGB}{248,249,250} 
+\definecolor{mygreen1}{RGB}{0,96,0}
+\definecolor{mygreen2}{RGB}{229,239,229}
+\definecolor{aristotelgreen}{HTML}{008A44}
+\definecolor{aristotelred}{HTML}{9E0101}
+\definecolor{aristotelgrey}{HTML}{2E2E2E}
+\definecolor{aristoteldarkred}{HTML}{500101}
+\definecolor{aristotelorange}{HTML}{FF8C00}
+
+\setbeamertemplate{theorem}[ams style]
+\setbeamertemplate{theorems}[numbered]
+\hypersetup{
+	colorlinks=true,
+	linkcolor=aristotelorange,   % color for normal internal links
+	citecolor=aristotelgreen,   % color for citation links
+	urlcolor=aristotelgreen      % color for external links
+}
+
+\setbeamercolor{palette primary}{bg=aristotelred, fg=white}
+\setbeamercolor{palette secondary}{bg=aristoteldarkred, fg=white}
+\setbeamercolor{palette tertiary}{bg=black, fg=white} 
+
+\setbeamercolor{title}{fg=white, bg=aristotelred} % Title text color
+\setbeamercolor{subtitle}{fg=white, bg=aristotelred} % Subtitle text color
+\setbeamercolor{background canvas}{bg=aristotelgrey} % Background for content canvas
+\setbeamercolor{normal text}{fg=white} % Normal text color
+\setbeamercolor{titlegraphic}{bg=mygray} % Background color for title graphic area
+\setbeamercolor{frametitle}{fg=white, bg=aristoteldarkred}
+
+% Change color of numbered circles in the table of contents
+\setbeamercolor{section number projected}{bg=white, fg=black}
+\setbeamercolor{subsection number projected}{bg=aristotelred, fg=aristotelgrey}
+\setbeamercolor{subsection number projected}{bg=aristotelorange, fg=white}
+
+\setbeamercolor{block title}{fg=white,bg=mygreen1}
+\setbeamercolor{block body}{fg=black,bg=mygreen2}
+
+
+\lstdefinestyle{rstyle}%
+{language=[LaTeX]TeX,
+	basicstyle=\footnotesize\ttfamily,
+	backgroundcolor = \color{mygray},
+	commentstyle=\slshape\color{green!50!black},
+	keywordstyle=\color{blue},
+	identifierstyle=\color{blue},
+	stringstyle=\color{orange},
+	%escapechar=\#,
+	rulecolor = \color{mygray}, 
+	showstringspaces = false,
+	showtabs = false,
+	tabsize = 2,
+	emphstyle=\color{red},
+	frame = single}
+
+
+\begin{document}
+	\title[Paper presentation]{Presentation of a paper:}
+	\subtitle[subtitle?]{Is There Too Much Benchmarking in Asset Management? \\
+		Anil K Kashyap, Natalia Kovrijnykh, Jian Li, \& Anna Pavlova (2021) }
+	\author[Riste Petrov]{Riste Petrov \\ \href{mailto:riste@uni-sofia.bg}{riste@uni-sofia.bg}}
+	\institute[AEEM - FEBA]{AEEM - FEBA - Sofia University St. Kliment Ohridski - coh. 2025/26}
+	\titlegraphic{\includegraphics[scale=0.5]{/home/anonymous/Documents/Mega/ЦЕЛ/Master/1Courses/SU ENG White horizontal.pdf}}
+	\date{\today}
+	
+	\begin{frame}[fragile]
+		\titlepage
+	\end{frame}
+	
+	\begin{frame}[fragile]
+		\frametitle{Contents}
+		\tableofcontents[]
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Paper at a Glance}
+		\begin{block}{What the paper does}
+			Proposes a tractable general-equilibrium model of delegated asset management in which benchmarking arises endogenously from optimal contracting, then characterizes its welfare consequences.
+		\end{block}
+		\vspace{0.5em}
+		\begin{itemize}
+			\item \textbf{Theory:} Optimal contracting + general equilibrium (CARA utility, N risky assets).
+			\item \textbf{Main result:} Privately optimal contracts involve \textit{too much} benchmarking and incentive provision relative to the social optimum — a pecuniary externality.
+			\item \textbf{Application:} ESG investing — shows ESG-tilted benchmarks dominate ESG constraints.
+			\item \textbf{Published:} \textit{American Economic Review}, Vol.\ 113, No.\ 4, April 2023, pp.\ 1112--1141.
+		\end{itemize}
+	\end{frame}
+	
+	
+	\section{Introduction}
+	\subsection{Authors}
+\begin{frame}[fragile]
+	\frametitle{Background of the authors (1/2)}
+	\framesubtitle{Academic}
+	\textbf{Anil K Kashyap} \\
+	Stevens Distinguished Service Professor at the University of Chicago Booth School of Business. His research spans banking, monetary policy, and financial regulation. He is also a Research Associate at the NBER.
+	
+	\vspace{1em}
+	\textbf{Natalia Kovrijnykh}\\
+	Associate Professor of Economics at the W.P. Carey School of Business, Arizona State University. Her research focuses on optimal contracting, moral hazard, and — as in this paper — the theoretical foundations of delegated asset management.
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Background of the authors (2/2)}
+	\framesubtitle{Academic}
+	\vspace{1em}
+	\textbf{Jian Li}\\
+	Assistant Professor of Finance at Columbia Business School. His research covers asset pricing and portfolio choice, with emphasis on delegated investment and fund manager incentives.
+	
+	\vspace{1em}
+	\textbf{Anna Pavlova}\\
+	Professor of Finance at London Business School and Research Fellow at CEPR. Her expertise lies in asset pricing and asset management, with research on how institutional incentives shape capital markets — a central concern of this paper.
+\end{frame}
+	
+	\subsection{Why did i chose this paper?}
+	\begin{frame} \frametitle{Why this paper?} 
+		I chose the paper because it sits at the intersection of capital markets and microeconomics: it analyzes individual fund managers' incentives under benchmark pressure, the resulting conflicts with investors' interests, and how those incentives can generate overcrowded trades. 
+	\end{frame}
+	\begin{frame} 
+		\frametitle{What is the narrative? (Layman's terms)} 
+		Benchmark-driven investing can push managers into the same trades to avoid underperforming peers. This herding—similar to trends like ESG flows—can lead managers to buy assets for benchmark or flow reasons rather than superior expected returns ("alpha"), creating crowded positions and potential unwanted risks for investors. 
+	\end{frame}	
+	
+	\section{Research}
+	
+\section{Research}
+
+\begin{frame}
+	\frametitle{Motivation: Why Does Benchmarking Matter?}
+	\begin{itemize}
+		\item Investors worldwide have delegated over \$100 trillion to asset management firms.
+		\item Portfolio managers are almost universally evaluated relative to a benchmark.
+		\begin{itemize}
+			\item Around 80\% of U.S. mutual funds explicitly base compensation on benchmark-relative performance (Ma, Tang \& G\'{o}mez, 2019).
+		\end{itemize}
+		\item Benchmarks are a significant driver of global capital flows and the real economy.
+		\begin{itemize}
+			\item Emerging market firms can cut their cost of funds by $\sim$1 percentage point simply by issuing bonds eligible for major benchmark indices (Calomiris et al., 2022).
+		\end{itemize}
+		\item \textbf{Central Question:} Is the widespread use of benchmarking in incentive contracts privately optimal — and is it socially optimal?
+	\end{itemize}
+\end{frame}
+	
+	\section{Model Overview}
+	\begin{frame}
+		\frametitle{Model: Core Components}
+		\begin{itemize}
+			\item \textbf{Agents:} Direct Investors, Portfolio Managers, Fund Investors.
+			\item \textbf{Assets:} N risky assets (cash flows $D \sim N(\mu, \Sigma)$) and a risk-free bond (zero interest).
+			\item \textbf{Preferences:} Constant Absolute Risk Aversion (CARA) utility: $U(W) = -e^{-\gamma W}$.
+			\item \textbf{Information Asymmetry:} Fund investors cannot observe managers' portfolio choices.
+			\item \textbf{Manager's Alpha:} Managers can generate "alpha" ($\Delta$) through return-augmenting activities (e.g., securities lending, liquidity provision) at a private cost ($\psi$).
+		\end{itemize}
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Manager's Compensation Contract}
+		\begin{itemize}
+			\item Contracts are linear in performance:
+			\[
+			w = a \cdot r_x + b(r_x - r_b) + c
+			\]
+			\item \textbf{Components:}
+			\begin{itemize}
+				\item $a \cdot r_x$: Absolute performance fee — manager's ``skin in the game.''
+				\item $b(r_x - r_b)$: Relative performance fee — reward/penalty vs.\ benchmark $r_b$.
+				\item $c$: Fixed salary component.
+			\end{itemize}
+			\item Fund return: $r_x = x^{\top}(\tilde{D} - S) + \Delta(x) - \psi(x)$, where $\Delta$ is alpha and $\psi$ is the private cost.
+			\item \textbf{Key Parameters:}
+			\begin{itemize}
+				\item $a$: Skin in the game (performance sensitivity).
+				\item $b$: Weight on relative (benchmark) performance.
+				\item $\theta$: Benchmark portfolio weights.
+			\end{itemize}
+			\item \textbf{Result:} Benchmarking arises \textit{endogenously} — it emerges from the optimal contract as a tool to partially insulate managers from risk.
+		\end{itemize}
+	\end{frame}
+	
+	\section{Analysis of Contracts}
+	\begin{frame}
+		\frametitle{Manager's Portfolio Choice}
+		\begin{itemize}
+			\item Managers balance:
+			\begin{itemize}
+				\item Maximizing expected alpha ($\Delta - \psi/a$).
+				\item Hedging benchmark risk ($b\theta$).
+				\item Managing their own risk exposure (scaled by $a$).
+			\end{itemize}
+			\item Manager's demand: $x_M = \Sigma^{-1} \left(\frac{\Delta - \psi/a + \mu - S}{a\gamma} + \frac{b\theta}{a}\right)$.
+			\item \textbf{Key Insight:} Manager's portfolio differs from direct investors due to alpha generation, hedging, and scaling by $a$.
+		\end{itemize}
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Equilibrium Prices and Contracts}
+		\begin{itemize}
+			\item Asset prices ($S$) depend on contracts via aggregate manager demand.
+			\item \textbf{Pecuniary Externality:} Individual fund investors take prices as given, ignoring how their contract choices (aggregated) affect the effectiveness of others' contracts.
+			\item This externality arises because benchmarking and tilting towards high-$\Delta$ assets inflate prices, reducing expected returns for all.
+		\end{itemize}
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Privately Optimal vs. Socially Optimal Contracts}
+		\begin{itemize}
+			\item \textbf{Privately Optimal:} Fund investors maximize their own utility, leading to excessive incentive provision and benchmarking due to the externality.
+			\item \textbf{Socially Optimal:} A planner internalizes the externality, aiming to maximize aggregate welfare.
+		\end{itemize}
+		\begin{block}{Key Differences:}
+			\begin{itemize}
+				\item \textbf{Skin in the Game ($a$):} $a_{social} < a_{private}$ (less incentive provision).
+				\item \textbf{Benchmarking ($b$):} $b_{social} < b_{private}$ (less benchmarking).
+				\item \textbf{Asset Prices ($S$):} $S_{social} < S_{private}$ (lower prices, higher expected returns).
+				\item \textbf{Manager Costs ($\psi \cdot x_M$):} $(\psi \cdot x_M)_{social} < (\psi \cdot x_M)_{private}$ (lower costs).
+			\end{itemize}
+		\end{block}
+	\end{frame}
+	
+	\section{Application: ESG Investing}
+	\begin{frame}
+		\frametitle{Incentivizing ESG Preferences}
+		\begin{itemize}
+			\item Model extended to include non-pecuniary benefits ($\kappa$) from "green" firms.
+			\item Fund investors (with ESG preferences) want to tilt portfolios towards green stocks.
+			\item \textbf{Optimal Contract:} Involves an ESG-tilted benchmark ($\theta$).
+			\item Fund investors design contracts to influence the manager's demand for risky assets.
+		\end{itemize}
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{ESG Benchmarking vs. Constraints}
+		\begin{itemize}
+			\item \textbf{Current Practice:} Often uses constraints on overall ESG scores.
+			\item \textbf{Model's Prediction:} ESG-tilted benchmarks are more efficient.
+			\item Using an ESG constraint is redundant if the benchmark is optimally chosen.
+			\item \textbf{Key Takeaway:} Well-designed benchmarks provide better incentives for managers to internalize investors' ESG preferences.
+		\end{itemize}
+	\end{frame}
+	
+	\section{Conclusions}
+	\begin{frame}
+		\frametitle{Main Contributions}
+		\begin{itemize}
+			\item Formalizes the pecuniary externality from benchmarking in asset management.
+			\item Shows that privately optimal contracts lead to excessive incentive provision and benchmarking, inflating prices and costs.
+			\item Socially optimal contracts correct this externality, leading to lower prices, lower costs, and improved welfare.
+			\item Provides a theoretical framework for understanding optimal incentive provision for ESG investing, advocating for ESG-tilted benchmarks.
+		\end{itemize}
+	\end{frame}
+	
+	
+	\section{Q\&A}
+	\begin{frame}[fragile]
+		\frametitle{Ending remarks}
+		\begin{center}
+			I am delighted for your attention.\\
+			\vspace{1em}
+			Q \& A?
+		\end{center}
+	\end{frame}
+	
+\end{document}

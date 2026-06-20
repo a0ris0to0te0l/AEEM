@@ -1,0 +1,7 @@
+\beamer@sectionintoc {1}{Introduction}{3}{0}{1}
+\beamer@subsectionintoc {1}{1}{Authors}{3}{0}{1}
+\beamer@subsectionintoc {1}{2}{Some context}{4}{0}{1}
+\beamer@sectionintoc {2}{Research}{6}{0}{2}
+\beamer@subsectionintoc {2}{1}{Scenario Model of GDP}{6}{0}{2}
+\beamer@subsectionintoc {2}{2}{Stocks Modeling}{8}{0}{2}
+\beamer@sectionintoc {3}{Q\&A}{12}{0}{3}
