@@ -1,0 +1,247 @@
+\documentclass{beamer} % Use handout to get rid of repeated slides
+\usetheme{AnnArbor}
+\usecolortheme{default}
+\usefonttheme{professionalfonts}
+\usepackage{mathpazo}
+\usepackage{listings}
+\usepackage{xcolor}
+
+% Define colors
+\definecolor{myred}{RGB}{163,0,0}
+\definecolor{ttcolor}{RGB}{0,0,1}%{RGB}{163,0,0}
+\definecolor{mygray}{RGB}{248,249,250} 
+\definecolor{mygreen1}{RGB}{0,96,0}
+\definecolor{mygreen2}{RGB}{229,239,229}
+\definecolor{aristotelgreen}{HTML}{008A44}
+\definecolor{aristotelred}{HTML}{9E0101}
+\definecolor{aristotelgrey}{HTML}{2E2E2E}
+\definecolor{aristoteldarkred}{HTML}{500101}
+\definecolor{aristotelorange}{HTML}{FF8C00}
+
+\setbeamertemplate{theorem}[ams style]
+\setbeamertemplate{theorems}[numbered]
+
+\usepackage{etoolbox}
+
+\undef{\definition}
+\theoremstyle{definition}
+\newtheorem{definition}{\translate{Definition}}
+\hypersetup{
+	colorlinks=true,
+	linkcolor=aristotelorange,   % color for normal internal links
+	citecolor=aristotelgreen,   % color for citation links
+	urlcolor=aristotelgreen      % color for external links
+}
+
+\setbeamercolor{palette primary}{bg=aristotelred, fg=white}
+\setbeamercolor{palette secondary}{bg=aristoteldarkred, fg=white}
+\setbeamercolor{palette tertiary}{bg=black, fg=white} 
+
+\setbeamercolor{title}{fg=white, bg=aristotelred} % Title text color
+\setbeamercolor{subtitle}{fg=white, bg=aristotelred} % Subtitle text color
+\setbeamercolor{background canvas}{bg=aristotelgrey} % Background for content canvas
+\setbeamercolor{normal text}{fg=white} % Normal text color
+\setbeamercolor{titlegraphic}{bg=mygray} % Background color for title graphic area
+\setbeamercolor{frametitle}{fg=white, bg=aristoteldarkred}
+
+% Change color of numbered circles in the table of contents
+\setbeamercolor{section number projected}{bg=white, fg=black}
+\setbeamercolor{subsection number projected}{bg=aristotelred, fg=aristotelgrey}
+\setbeamercolor{subsection number projected}{bg=aristotelorange, fg=white}
+
+\setbeamercolor{block title}{fg=white,bg=mygreen1}
+\setbeamercolor{block body}{fg=black,bg=mygreen2}
+
+
+\lstdefinestyle{rstyle}%
+{language=[LaTeX]TeX,
+	basicstyle=\footnotesize\ttfamily,
+	backgroundcolor = \color{mygray},
+	commentstyle=\slshape\color{green!50!black},
+	keywordstyle=\color{blue},
+	identifierstyle=\color{blue},
+	stringstyle=\color{orange},
+	%escapechar=\#,
+	rulecolor = \color{mygray}, 
+	showstringspaces = false,
+	showtabs = false,
+	tabsize = 2,
+	emphstyle=\color{red},
+	frame = single} 
+
+\begin{document}
+	\title[Invalid \&
+	 Weak Instruments]{Presentation of a paper}
+	\subtitle[subtitle?]{Avoiding Invalid Instruments and
+		Coping with Weak Instruments \\
+		Murray, M. P. (2006). }
+	\author[Riste Petrov]{Riste Petrov \\ \href{mailto:riste@uni-sofia.bg}{riste@uni-sofia.bg}}
+	\institute[AEEM - FEBA]{AEEM - FEBA - Sofia University St. Kliment Ohridski - coh. 2026/27}
+	\titlegraphic{\includegraphics[scale=0.5]{/home/anonymous/Documents/Mega Sync/ЦЕЛ/Master/1Courses/SU ENG White horizontal.pdf}}
+	\date{\today}
+	
+	\begin{frame}[fragile]
+		\titlepage
+	\end{frame}
+	
+	\begin{frame}[fragile]
+		\frametitle{Contents}
+		\tableofcontents[]
+	\end{frame}
+	
+	
+	\section{Introduction}
+	\subsection{Author}
+	\begin{frame}[fragile]
+		\frametitle{Background of the author}
+		\framesubtitle{Academic and non academic}
+		\textbf{Michael P. Murray}
+		main research interest in poverty, with articles on economic theory and econometrics.
+		\\
+		\vspace{1em}
+		Taught urban, public, development, behavioral economics, microeconomics theory and econometrics. At Bates University, visiting professorship at UC Berkley, Harvard, LUISS Guido Carli University.\\
+		\vspace{1em}
+		Non academic career includes positions at RAND Corporation \& the World Bank.	
+	\end{frame}
+	
+	\subsection{Defining the problematic IV}
+	\begin{frame}[fragile]
+		\frametitle{Defining the main concern in IV}
+		\framesubtitle{Invalid and Weak Instruments}
+		\textbf{Instrument Variable}
+		estimation is used to avoid biased results that arise when independent variables are correlated with the error term. This issue is addressed using a two-stage estimation (2SLS) or multi stage estimation process, where the first stage predicts the problematic variable with instruments, and the second or the additional stages uses these predictions to estimate the outcome variable.
+		\\
+		\vspace{1em}
+		\textbf{Invalid Instrument Variable}
+		are IVs that are correlated with the error term.\\
+		\vspace{1em}
+		\textbf{Weak Instrument Variable}
+		are those that are weakly correlated with the independent variable, and thus do not effectively correct for biases.
+	\end{frame}
+	
+	\begin{frame}[fragile]
+	\frametitle{Practical Analogy}
+	\framesubtitle{Archimedes' Lever and the Earth}
+	\centering
+	\begin{table}[ht]
+		\begin{tabular}{cc}
+			\includegraphics[width=0.5\textwidth]{Archimedes.jpg} & 
+			\begin{minipage}[b]{0.5\textwidth}
+				\textbf{Type of IV = Lever Material}\\
+				\textbf{Valid = Titanium}\\
+				\textbf{Invalid = Bamboo / Rubber}\\
+				\textbf{Weak = Plastic / Wood}
+			\end{minipage}
+		\end{tabular}
+	\end{table}
+\end{frame}
+
+\section{Invalid IVs}
+\begin{frame}[fragile]
+	\frametitle{Invalid IVs}
+	\framesubtitle{Ensuring validity of Instrumental Variables (IVs)}
+	\textbf{Relevance}\\
+	Instruments must be correlated with the endogenous explanatory variable (incarceration rates, police numbers.)
+	
+	\vspace{1em}
+	\textbf{Exclusion Restriction}\\
+	instruments should affect the dependent variable (e.g crime rate) only trough the endogenous variable.
+	
+	\vspace{1em}
+	\textbf{Preclusion of Links to Disturbances}\\
+	verify empirical checks (lawsuits predicting past crime rates) that instruments are not related to unobserved shocks affecting the outcome.
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Invalid IVs}
+	\framesubtitle{Strategies to Validate Instruments and Avoid Bias}
+	\textbf{Test over-identifying restrictions}\\
+	Use tests like Sargan’s to check if instruments are consistent with the data.
+	$$ S = n * R^2 $$
+	
+	\vspace{1em}
+	\textbf{Use Multiple Instruments}\\
+	Comparing results from different instruments (e.g., election cycles vs. firefighters) enhances credibility; consistent estimates support validity.
+	
+	\vspace{1em}
+	\textbf{Diligent Omitted Variable Checks}\\
+	Include relevant controls to prevent omitted variable bias, ensuring that instruments are not correlated with unobserved factors.
+\end{frame}
+\begin{frame}[fragile]
+	\frametitle{Invalid IVs}
+	\framesubtitle{Additional Best Practices}
+	\textbf{Leverage Intuition and Reduced-Form Regressions}\\
+	Confirm that instruments behave as expected (e.g., litigation increases prison populations, which then reduce crime).
+	
+	\vspace{1em}
+	\textbf{Avoid Data Mining}\\
+	Pretesting and selecting instruments based on theoretical reasoning rather than fishing for significance reduces invalidity risk.
+	
+	\vspace{1em}
+	\textbf{Caution with Over-Identification Tests}\\
+	Recognize that failing to reject the null does not guarantee validity, especially if instruments share common rationales.
+\end{frame}
+
+
+\section{Weak IVs}
+\begin{frame}[fragile]
+	\frametitle{Weak IVs}
+	\framesubtitle{Problems caused by them}
+	\textbf{Finite-sample bias}\\
+	two-stage least squares (2SLS) estimates can be biased, sometimes more than ordinary least squares (OLS).
+	
+	\vspace{1em}
+	\textbf{Underestimated standard errors}\\
+	Leads to overstated statistical significance.
+	
+	\vspace{1em}
+	\textbf{Distorted inference}\\
+	Confidence intervals and hypothesis tests become unreliable, especially in over-identified models.
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Weak IVs}
+	\framesubtitle{Strategies to Address Weak Instruments}
+	\textbf{Stock-Yogo Test}\\
+	Checks if instruments are strong enough to produce reliable estimates (e.g., bias less than 10\% of OLS).
+	
+	\vspace{1em}
+	\textbf{Conditional likelihood ratio tests (Moreira, Andrews)}\\
+	Adjust for weak instruments, providing valid hypothesis testing and confidence intervals.
+	$$ LRT = -2 ln \left(\frac{L_0}{L_1}\right) $$
+	
+	\vspace{1em}
+	\textbf{Avoid relying solely on 2SLS}\\
+	Always evaluate instrument strength before inference; avoid relying solely on 2SLS when instruments are weak.
+\end{frame}
+\section{Conclusions}
+
+\begin{frame}[fragile] 
+	\frametitle{Conclusion} 
+	\textbf{Key Takeaways} \\
+	
+	The validity and strength of instruments are crucial for credible IV estimates. Weak or invalids IVs can lead to significant biases and unreliable inferences, especially when instruments are "almost valid" but weak.\\
+	\vspace{1em}	
+	Rigorous testing and validation are essential to avoid misleading results. 
+\end{frame}
+
+\begin{frame}[fragile]
+	 \frametitle{Final Remarks} 
+	 \textbf{Navigating Heterogeneity and Instrumental Variable Challenges} \
+	
+	Addressing heterogeneity requires understanding which aspects of responses are economically relevant and choosing appropriate econometric techniques.\\
+	\vspace{1em}
+	Recognizing that IV estimates may not reflect average effects across populations underscores the importance of careful instrument selection and interpretation. Diligence, theoretical grounding, and robustness checks are vital for credible causal inference. 
+\end{frame}
+
+\section{Q\&A}
+\begin{frame}[fragile]
+	\frametitle{Ending remarks}
+	\begin{center}
+		I am delighted for your attention.\\
+		\vspace{1em}
+		Q \& A?
+	\end{center}
+\end{frame}
+
+\end{document}

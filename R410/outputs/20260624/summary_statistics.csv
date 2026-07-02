@@ -1,0 +1,17 @@
+"country","state","quarters","mean_gdp_gr","mean_g_gr","mean_unemp","sd_gdp_gr","sd_g_gr"
+"Bulgaria","Expansion",51,0.56,0.62,7.56,1.46,2.46
+"Bulgaria","Slack",53,1.02,0.6,10.3,0.92,1.86
+"Croatia","Expansion",49,0.32,0.44,9.59,2.91,2.26
+"Croatia","Slack",47,0.81,0.84,12.12,1.33,2.24
+"Greece","Expansion",61,-0.24,-0.1,13.33,2.53,2.72
+"Greece","Slack",51,0.76,0.52,16.24,1.42,2.95
+"Montenegro","Expansion",19,-0.94,-0.62,16.98,4.9,6.68
+"Montenegro","Slack",21,1.71,1.47,18.22,3.84,4.21
+"North Macedonia","Expansion",39,0.63,0.92,23.26,3.73,4.69
+"North Macedonia","Slack",41,0.63,-0.07,24.31,1.04,3
+"Romania","Expansion",52,0.59,0.69,6.05,3,12.86
+"Romania","Slack",57,1.02,-0.65,6.65,1.96,10.69
+"Serbia","Expansion",30,0.54,0.35,12.06,2.71,2.05
+"Serbia","Slack",26,0.75,0.3,12.17,1.09,2.63
+"Slovenia","Expansion",50,0.17,0.6,5.51,1.99,1.11
+"Slovenia","Slack",59,0.95,0.5,6.91,1.79,1.06

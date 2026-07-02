@@ -1,0 +1,129 @@
+This is LuaHBTeX, Version 1.18.0 (TeX Live 2025/dev/Debian)  (format=lualatex 2025.12.28)  10 JUN 2026 15:33
+ restricted system commands enabled.
+**presentation.tex
+(./presentation.tex
+LaTeX2e <2024-11-01> patch level 2
+L3 programming layer <2025-01-18>
+[\directlua]:1: module 'luaotfload-main' not found:
+	no field package.preload['luaotfload-main']
+	[kpse lua searcher] file not found: 'luaotfload-main'
+Error in luaotfload: reverting to OT1
+Inserting `tracingstacklevels' in `input_level_string'.
+(/usr/share/texlive/texmf-dist/tex/latex/beamer/beamer.cls
+Document Class: beamer 2025/02/04 v3.72 A class for typesetting presentations
+(/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerbasemodes.sty
+(/usr/share/texlive/texmf-dist/tex/latex/etoolbox/etoolbox.sty
+Package: etoolbox 2025/02/11 v2.5l e-TeX tools for LaTeX (JAW)
+\etb@tempcnta=\count194
+)
+\beamer@tempbox=\box52
+\beamer@tempcount=\count195
+\c@beamerpauses=\count196
+
+(/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerbasedecode.sty
+\beamer@slideinframe=\count197
+\beamer@minimum=\count198
+\beamer@decode@box=\box53
+)
+\beamer@commentbox=\box54
+\beamer@modecount=\count199
+)
+(/usr/share/texlive/texmf-dist/tex/generic/iftex/iftex.sty
+Package: iftex 2024/12/12 v1.0g TeX engine tests
+)
+\headdp=\dimen140
+\footheight=\dimen141
+\sidebarheight=\dimen142
+\beamer@tempdim=\dimen143
+\beamer@finalheight=\dimen144
+\beamer@animht=\dimen145
+\beamer@animdp=\dimen146
+\beamer@animwd=\dimen147
+\beamer@leftmargin=\dimen148
+\beamer@rightmargin=\dimen149
+\beamer@leftsidebar=\dimen150
+\beamer@rightsidebar=\dimen151
+\beamer@boxsize=\dimen152
+\beamer@vboxoffset=\dimen153
+\beamer@descdefault=\dimen154
+\beamer@descriptionwidth=\dimen155
+\beamer@lastskip=\skip49
+\beamer@areabox=\box55
+\beamer@animcurrent=\box56
+\beamer@animshowbox=\box57
+\beamer@sectionbox=\box58
+\beamer@logobox=\box59
+\beamer@linebox=\box60
+\beamer@sectioncount=\count266
+\beamer@subsubsectionmax=\count267
+\beamer@subsectionmax=\count268
+\beamer@sectionmax=\count269
+\beamer@totalheads=\count270
+\beamer@headcounter=\count271
+\beamer@partstartpage=\count272
+\beamer@sectionstartpage=\count273
+\beamer@subsectionstartpage=\count274
+\beamer@animationtempa=\count275
+\beamer@animationtempb=\count276
+\beamer@xpos=\count277
+\beamer@ypos=\count278
+\beamer@ypos@offset=\count279
+\beamer@showpartnumber=\count280
+\beamer@currentsubsection=\count281
+\beamer@coveringdepth=\count282
+\beamer@sectionadjust=\count283
+\beamer@toclastsection=\count284
+\beamer@tocsectionnumber=\count285
+
+(/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerbaseoptions.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
+\KV@toks@=\toks17
+))
+\beamer@paperwidth=\skip50
+\beamer@paperheight=\skip51
+
+(/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty
+Package: geometry 2020/01/02 v5.9 Page Geometry
+
+(/usr/share/texlive/texmf-dist/tex/generic/iftex/ifvtex.sty
+Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
+)
+\Gm@cnth=\count286
+\Gm@cntv=\count287
+\c@Gm@tempcnt=\count288
+\Gm@bindingoffset=\dimen156
+\Gm@wd@mp=\dimen157
+\Gm@odd@mp=\dimen158
+\Gm@even@mp=\dimen159
+\Gm@layoutwidth=\dimen160
+\Gm@layoutheight=\dimen161
+\Gm@layouthoffset=\dimen162
+\Gm@layoutvoffset=\dimen163
+\Gm@dimlist=\toks18
+)
+
+! LaTeX Error: File `pgfmath.sty' not found.
+
+Type X to quit or <RETURN> to proceed,
+or enter new name. (Default extension: sty)
+
+Enter file name: 
+! Emergency stop.
+<read *> 
+   
+l.358 
+     
+*** (cannot \read from terminal in nonstop modes)
+
+
+
+Here is how much of LuaTeX's memory you used:
+ 1404 strings out of 475512
+ 100000,552014 words of node,token memory allocated 287 words of node memory still in use:
+   1 hlist, 1 dir, 41 glue_spec, 1 if_stack nodes
+   avail lists: 2:14,3:3,4:1,5:1,9:1
+ 24482 multiletter control sequences out of 65536+600000
+ 14 fonts using 591679 bytes
+ 61i,0n,62p,151b,34s stack positions out of 10000i,1000n,20000p,200000b,200000s
+!  ==> Fatal error occurred, no output PDF file produced!

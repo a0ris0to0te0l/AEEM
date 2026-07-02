@@ -1,0 +1,10 @@
+\beamer@sectionintoc {1}{Introduction}{4}{0}{1}
+\beamer@subsectionintoc {1}{1}{Authors}{4}{0}{1}
+\beamer@subsectionintoc {1}{2}{Why did i chose this paper?}{6}{0}{1}
+\beamer@sectionintoc {2}{Research}{8}{0}{2}
+\beamer@sectionintoc {3}{Research}{8}{0}{3}
+\beamer@sectionintoc {4}{Model Overview}{9}{0}{4}
+\beamer@sectionintoc {5}{Analysis of Contracts}{11}{0}{5}
+\beamer@sectionintoc {6}{Application: ESG Investing}{14}{0}{6}
+\beamer@sectionintoc {7}{Conclusions}{16}{0}{7}
+\beamer@sectionintoc {8}{Q\&A}{17}{0}{8}

@@ -1,0 +1,10 @@
+"group","horizon","mult_slack","mult_exp","diff","pval_diff"
+"Balkan",4,1.573,2.472,-0.899,0.306
+"Balkan",8,1.405,1.026,0.38,0.472
+"Balkan",12,1.19,1.296,-0.106,0.794
+"Advanced Economies",4,3.33,1.852,1.478,0.247
+"Advanced Economies",8,2.157,0.613,1.544,0.199
+"Advanced Economies",12,0.603,0.434,0.169,0.863
+"All Countries",4,1.616,2.376,-0.761,0.377
+"All Countries",8,1.422,1.017,0.405,0.465
+"All Countries",12,1.169,1.284,-0.116,0.789

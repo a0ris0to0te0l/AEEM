@@ -1,0 +1,13 @@
+\beamer@sectionintoc {1}{Introduction}{3}{0}{1}
+\beamer@subsectionintoc {1}{1}{Hypotheses}{3}{0}{1}
+\beamer@subsectionintoc {1}{2}{Sample}{4}{0}{1}
+\beamer@subsectionintoc {1}{3}{Experimental Design}{5}{0}{1}
+\beamer@subsectionintoc {1}{4}{Feature Engineering}{6}{0}{1}
+\beamer@sectionintoc {2}{Results}{11}{0}{2}
+\beamer@subsectionintoc {2}{1}{Modeling First Quiz Results}{11}{0}{2}
+\beamer@subsectionintoc {2}{2}{H0: Honesty vs Attitude Toward Math}{12}{0}{2}
+\beamer@subsectionintoc {2}{3}{H1: Seating Proximity and Honesty}{14}{0}{2}
+\beamer@subsectionintoc {2}{4}{H2: Performance and Homework Behaviors}{17}{0}{2}
+\beamer@sectionintoc {3}{Discussion}{18}{0}{3}
+\beamer@subsectionintoc {3}{1}{Limitations}{19}{0}{3}
+\beamer@subsectionintoc {3}{2}{Future Research}{20}{0}{3}

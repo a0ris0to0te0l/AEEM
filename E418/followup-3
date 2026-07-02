@@ -1,0 +1,124 @@
+\documentclass{beamer} % Use handout to get rid of repeated slides
+\usetheme{AnnArbor}
+\usecolortheme{default}
+\usefonttheme{professionalfonts}
+\usepackage{mathpazo}
+\usepackage{listings}
+\usepackage{xcolor}
+
+% Define colors
+\definecolor{myred}{RGB}{163,0,0}
+\definecolor{ttcolor}{RGB}{0,0,1}%{RGB}{163,0,0}
+\definecolor{mygray}{RGB}{248,249,250} 
+\definecolor{mygreen1}{RGB}{0,96,0}
+\definecolor{mygreen2}{RGB}{229,239,229}
+\definecolor{aristotelgreen}{HTML}{008A44}
+\definecolor{aristotelred}{HTML}{9E0101}
+\definecolor{aristotelgrey}{HTML}{2E2E2E}
+\definecolor{aristoteldarkred}{HTML}{500101}
+\definecolor{aristotelorange}{HTML}{FF8C00}
+
+\setbeamertemplate{theorem}[ams style]
+\setbeamertemplate{theorems}[numbered]
+
+\usepackage{etoolbox}
+\usepackage{amsmath}
+
+\undef{\definition}
+\theoremstyle{definition}
+\newtheorem{definition}{\translate{Definition}}
+\hypersetup{
+	colorlinks=true,
+	linkcolor=aristotelorange,   % color for normal internal links
+	citecolor=aristotelgreen,   % color for citation links
+	urlcolor=aristotelgreen      % color for external links
+}
+
+\setbeamercolor{palette primary}{bg=aristotelred, fg=white}
+\setbeamercolor{palette secondary}{bg=aristoteldarkred, fg=white}
+\setbeamercolor{palette tertiary}{bg=black, fg=white} 
+
+\setbeamercolor{title}{fg=white, bg=aristotelred} % Title text color
+\setbeamercolor{subtitle}{fg=white, bg=aristotelred} % Subtitle text color
+\setbeamercolor{background canvas}{bg=aristotelgrey} % Background for content canvas
+\setbeamercolor{normal text}{fg=white} % Normal text color
+\setbeamercolor{titlegraphic}{bg=mygray} % Background color for title graphic area
+\setbeamercolor{frametitle}{fg=white, bg=aristoteldarkred}
+
+% Change color of numbered circles in the table of contents
+\setbeamercolor{section number projected}{bg=white, fg=black}
+\setbeamercolor{subsection number projected}{bg=aristotelred, fg=aristotelgrey}
+\setbeamercolor{subsection number projected}{bg=aristotelorange, fg=white}
+
+
+\setbeamercolor{block title}{fg=white,bg=mygreen1}
+\setbeamercolor{block body}{fg=black,bg=mygreen2}
+
+
+\lstdefinestyle{rstyle}%
+{language=[LaTeX]TeX,
+	basicstyle=\footnotesize\ttfamily,
+	backgroundcolor = \color{mygray},
+	commentstyle=\slshape\color{green!50!black},
+	keywordstyle=\color{blue},
+	identifierstyle=\color{blue},
+	stringstyle=\color{orange},
+	%escapechar=\#,
+	rulecolor = \color{mygray}, 
+	showstringspaces = false,
+	showtabs = false,
+	tabsize = 2,
+	emphstyle=\color{red},
+	frame = single} 
+
+
+\begin{document}
+	
+	% Title page information
+	\title[Student Scores]{Follow up}
+	\subtitle{Predicting First‑Year Statistics Grades
+		from Attendance, Honesty, and Quiz Results
+		Cohort 2026/30}
+	\author[Riste Petrov]{Riste Petrov \\ \href{mailto:riste@uni-sofia.bg}{riste@uni-sofia.bg}}
+	\institute[AEEM - FEBA]{AEEM - FEBA - Sofia University St. Kliment Ohridski - coh. 2025/26}
+	\titlegraphic{\includegraphics[scale=0.5]{/home/anonymous/Documents/Mega/ЦЕЛ/Master/1Courses/SU ENG White horizontal.pdf}}
+	\date{\today}
+	
+	\begin{frame}
+		\titlepage
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Contents}
+		\tableofcontents[]
+	\end{frame}
+	
+
+	\begin{frame}
+		\frametitle{Introduction}
+		As of this February, i started as a Teaching Demonstrator at UGD Shtip. Because of wanting to make the exercise sessions more interactive and to gauge pre-course knowledge on Statistics, unintentionally this experiment was started.\\
+		\vspace{1em}		
+		Also in order to have an objective way (numeric) of grading the attendance on exercise sessions, homework i started the dataset used in this so called experiment.\\
+		\vspace{1em}
+		The grade structure at UGD Shtip is as follows:
+		\includegraphics[width=\textwidth]{FPI.png}
+		 
+	\end{frame}
+	
+
+	
+	
+
+	
+	\section{Q\&A}
+	\begin{frame}[fragile]
+		\frametitle{Ending remarks}
+		\begin{center}
+			I am delighted for your attention.\\
+			\vspace{1em}
+			Q \& A?
+		\end{center}
+	\end{frame}
+	
+	
+\end{document}

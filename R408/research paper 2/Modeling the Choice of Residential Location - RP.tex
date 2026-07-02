@@ -1,0 +1,180 @@
+\documentclass{beamer} % Use handout to get rid of repeated slides
+\usetheme{AnnArbor}
+\usecolortheme{default}
+\usefonttheme{professionalfonts}
+\usepackage{mathpazo}
+\usepackage{cancel}
+\usepackage{listings}
+\usepackage{xcolor}
+
+% Define colors
+\definecolor{myred}{RGB}{163,0,0}
+\definecolor{ttcolor}{RGB}{0,0,1}%{RGB}{163,0,0}
+\definecolor{mygray}{RGB}{248,249,250} 
+\definecolor{mygreen1}{RGB}{0,96,0}
+\definecolor{mygreen2}{RGB}{229,239,229}
+\definecolor{aristotelgreen}{HTML}{008A44}
+\definecolor{aristotelred}{HTML}{9E0101}
+\definecolor{aristotelgrey}{HTML}{2E2E2E}
+\definecolor{aristoteldarkred}{HTML}{500101}
+\definecolor{aristotelorange}{HTML}{FF8C00}
+
+\setbeamertemplate{theorem}[ams style]
+\setbeamertemplate{theorems}[numbered]
+
+\usepackage{etoolbox}
+
+\undef{\definition}
+\theoremstyle{definition}
+\newtheorem{definition}{\translate{Definition}}
+\hypersetup{
+	colorlinks=true,
+	linkcolor=aristotelorange,   % color for normal internal links
+	citecolor=aristotelgreen,   % color for citation links
+	urlcolor=aristotelgreen      % color for external links
+}
+
+\setbeamercolor{palette primary}{bg=aristotelred, fg=white}
+\setbeamercolor{palette secondary}{bg=aristoteldarkred, fg=white}
+\setbeamercolor{palette tertiary}{bg=black, fg=white} 
+
+\setbeamercolor{title}{fg=white, bg=aristotelred} % Title text color
+\setbeamercolor{subtitle}{fg=white, bg=aristotelred} % Subtitle text color
+\setbeamercolor{background canvas}{bg=aristotelgrey} % Background for content canvas
+\setbeamercolor{normal text}{fg=white} % Normal text color
+\setbeamercolor{titlegraphic}{bg=mygray} % Background color for title graphic area
+\setbeamercolor{frametitle}{fg=white, bg=aristoteldarkred}
+
+% Change color of numbered circles in the table of contents
+\setbeamercolor{section number projected}{bg=white, fg=black}
+\setbeamercolor{subsection number projected}{bg=aristotelred, fg=aristotelgrey}
+\setbeamercolor{subsection number projected}{bg=aristotelorange, fg=white}
+
+\setbeamercolor{block title}{fg=white,bg=mygreen1}
+\setbeamercolor{block body}{fg=black,bg=mygreen2}
+
+
+\lstdefinestyle{rstyle}%
+{language=[LaTeX]TeX,
+	basicstyle=\footnotesize\ttfamily,
+	backgroundcolor = \color{mygray},
+	commentstyle=\slshape\color{green!50!black},
+	keywordstyle=\color{blue},
+	identifierstyle=\color{blue},
+	stringstyle=\color{orange},
+	%escapechar=\#,
+	rulecolor = \color{mygray}, 
+	showstringspaces = false,
+	showtabs = false,
+	tabsize = 2,
+	emphstyle=\color{red},
+	frame = single} 
+
+\begin{document}
+	\title[Paper presentation]{Presentation of a paper:}
+	\subtitle[subtitle?]{Modeling the Choice of Residential Location \\ Daniel McFadden (1978) }
+	\author[Riste Petrov]{Riste Petrov \\ \href{mailto:riste@uni-sofia.bg}{riste@uni-sofia.bg}}
+	\institute[AEEM - FEBA]{AEEM - FEBA - Sofia University St. Kliment Ohridski - coh. 2025/26}
+	\titlegraphic{\includegraphics[scale=0.5]{/home/anonymous/Documents/Mega/ЦЕЛ/Master/1Courses/SU ENG White horizontal.pdf}}
+	\date{\today}
+	
+	\begin{frame}[fragile]
+		\titlepage
+	\end{frame}
+	
+	\begin{frame}[fragile]
+		\frametitle{Contents}
+		\tableofcontents[]
+	\end{frame}
+	
+	\section{Introduction}
+	\subsection{Author}
+	\begin{frame}[fragile]
+		\frametitle{Background of the authors}
+		\framesubtitle{Academic}
+		\textbf{Daniel McFadden} \\
+		\vspace{1em}
+		Nobel laureate, attended University of Minnesota B.S. in Physics , later Ph.D Behavioral Science (Economics). He has been a faculty member of University of Berkeley, MIT \& University of Southern California (emeritus). 
+
+	\end{frame}
+	
+	\subsection{Context}
+	\begin{frame}[fragile]
+		\frametitle{Choice of Residential Location}
+
+		The whole paper starts with a key classical assumption that the consumers are rational, \underline{utility-maximizing consumers}.
+		
+		$$ P_{cn} = Prob [U_{cn} > U_{bm} \quad | \quad  _{bm} \neq _{cn}]$$
+		\begin{itemize}
+			\item $U_{cn}$ - utility of choosing property in community C
+			\item $U_{bm}$ - utility of choosing property in community B
+		\end{itemize}
+		Using econometrics $U_{cn}$ \& $U_{bm}$ would be estimated with a error term, which translated leads us to the following probability equation:
+		
+		$$ P_{cn} = \int_{\varepsilon_{cn} = - \infty}^{+\infty} F_{cn} [(V_{cn})+\varepsilon_{cn} - V_{dm}]d\varepsilon_{cn} $$
+		
+	\end{frame}
+
+	\section{Main ideas}
+	\begin{frame}
+		\frametitle{Multinomial Logit}
+		Using the previous definitions of the probability using Econometric estimation we can express the probability in a classification form as follows:
+		
+		$$ P_{cn} = \frac{exp(V_{cn})}{\sum_{b=1}^{C} \sum_{m=t}^{N_b} exp(V_{bm})} $$
+		
+		And for the framework we use in Residential location we use the common benefits to model the estimate utility as a vector of independent variables $X_{cn}$ which are community specific and $Y_c$ which is property specific.
+		
+		$$ V_{cn} = \beta \cdot X_{cn} + \beta_2 \cdot Y_c $$
+		
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Nested Logit}
+		Using the previous definitions of the probability using Econometric estimation we can express the probability in a classification form as follows:
+		
+		$$ P_{c n} = \frac{\exp\big(\beta_2 \cdot Y_c + (1-\beta_2) \cdot I_c\big)}{\sum_{b=1}^{C} \exp\big(\beta_2 \cdot  Y_b + (1-\beta_2) \cdot I_b\big)} $$
+		
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{Generalized Model}
+		Defining a general 
+		
+		$$ \bar{U} = \int_{\varepsilon = - \infty}^{+\infty}  max (V_{i}+\varepsilon_i) \cdot F(e) \cdot d \varepsilon_{cn} $$
+		Which is linearized could be should as:
+		$$ \bar{U} = log G[exp(V_1),\hdots, exp(V_j)] + e (0.57721)$$
+		From which we could define:
+		$$ P_i = \frac{\delta \bar{U}}{\delta (V_i)}$$
+		
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{Final Multinomial Logit}
+	
+		\[
+		P_{c}
+		= \frac{\exp\!\left(\dfrac{\beta_2 Y_{c} + \beta X_{c}^{*} + (1-\beta_2)\log r_{c} + \tfrac{\omega_{c}^{2}}{2}}{1-\sigma}\right)}
+		{\displaystyle\sum_{b=1}^{C}\exp\!\left(\dfrac{\beta_2 Y_{b} + \beta X_{b}^{*} + (1-\beta_2)\log r_{b} + \tfrac{\omega_{b}^{2}}{2}}{1-\sigma}\right)}
+		\]
+		\begin{itemize}
+			\footnotesize
+				\item $\beta_{2}Y_{j}$: contribution of observable location attributes $Y$.
+				\item $\beta X_{j}^{*}$: household–location interactions or other covariates.
+				\item $(1-\beta_{2})\log r_{j}$: (dis)utility from log rent.
+				\item $\tfrac{\omega_{j}^{2}}{2}$: variance correction from a normal random component $\omega_{j}$.
+				\item Division by $1-\sigma$ scales sensitivity to utility differences (require $\sigma<1$).
+		\end{itemize}
+	\end{frame}
+
+
+	\section{Q\&A}
+	\begin{frame}[fragile]
+		\frametitle{Ending remarks}
+		\begin{center}
+			I am delighted for your attention.\\
+			\vspace{1em}
+			Q \& A?
+		\end{center}
+	\end{frame}
+	
+\end{document}

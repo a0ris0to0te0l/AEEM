@@ -1,0 +1,76 @@
+\headcommand {\slideentry {0}{0}{1}{1/1}{}{0}}
+\headcommand {\beamer@framepages {1}{1}}
+\headcommand {\slideentry {0}{0}{2}{2/2}{}{0}}
+\headcommand {\beamer@framepages {2}{2}}
+\headcommand {\beamer@sectionpages {1}{2}}
+\headcommand {\beamer@subsectionpages {1}{2}}
+\headcommand {\sectionentry {1}{Introduction}{3}{Introduction}{0}}
+\headcommand {\beamer@subsectionpages {3}{2}}
+\headcommand {\beamer@subsectionentry {0}{1}{1}{3}{Hypotheses}}
+\headcommand {\slideentry {1}{1}{1}{3/3}{Hypotheses}{0}}
+\headcommand {\beamer@framepages {3}{3}}
+\headcommand {\beamer@subsectionpages {3}{3}}
+\headcommand {\beamer@subsectionentry {0}{1}{2}{4}{Sample}}
+\headcommand {\slideentry {1}{2}{1}{4/4}{Sample}{0}}
+\headcommand {\beamer@framepages {4}{4}}
+\headcommand {\beamer@subsectionpages {4}{4}}
+\headcommand {\beamer@subsectionentry {0}{1}{3}{5}{Experimental Design}}
+\headcommand {\slideentry {1}{3}{1}{5/5}{Experimental Design}{0}}
+\headcommand {\beamer@framepages {5}{5}}
+\headcommand {\beamer@subsectionpages {5}{5}}
+\headcommand {\beamer@subsectionentry {0}{1}{4}{6}{Feature Engineering}}
+\headcommand {\slideentry {1}{4}{1}{6/6}{Feature Engineering}{0}}
+\headcommand {\beamer@framepages {6}{6}}
+\headcommand {\slideentry {1}{4}{2}{7/7}{Feature Engineering}{0}}
+\headcommand {\beamer@framepages {7}{7}}
+\headcommand {\slideentry {1}{4}{3}{8/8}{Feature Engineering}{0}}
+\headcommand {\beamer@framepages {8}{8}}
+\headcommand {\slideentry {1}{4}{4}{9/9}{Feature Engineering}{0}}
+\headcommand {\beamer@framepages {9}{9}}
+\headcommand {\slideentry {1}{4}{5}{10/10}{Feature Engineering}{0}}
+\headcommand {\beamer@framepages {10}{10}}
+\headcommand {\beamer@sectionpages {3}{10}}
+\headcommand {\beamer@subsectionpages {6}{10}}
+\headcommand {\sectionentry {2}{Results}{11}{Results}{0}}
+\headcommand {\beamer@subsectionpages {11}{10}}
+\headcommand {\beamer@subsectionentry {0}{2}{1}{11}{Modeling First Quiz Results}}
+\headcommand {\slideentry {2}{1}{1}{11/11}{Modeling First Quiz Results}{0}}
+\headcommand {\beamer@framepages {11}{11}}
+\headcommand {\beamer@subsectionpages {11}{11}}
+\headcommand {\beamer@subsectionentry {0}{2}{2}{12}{H0: Honesty vs Attitude Toward Math}}
+\headcommand {\slideentry {2}{2}{1}{12/12}{H0: Honesty vs Attitude Toward Math}{0}}
+\headcommand {\beamer@framepages {12}{12}}
+\headcommand {\slideentry {2}{2}{2}{13/13}{H0: Honesty vs Attitude Toward Math}{0}}
+\headcommand {\beamer@framepages {13}{13}}
+\headcommand {\beamer@subsectionpages {12}{13}}
+\headcommand {\beamer@subsectionentry {0}{2}{3}{14}{H1: Seating Proximity and Honesty}}
+\headcommand {\slideentry {2}{3}{1}{14/14}{H1: Seating Proximity and Honesty}{0}}
+\headcommand {\beamer@framepages {14}{14}}
+\headcommand {\slideentry {2}{3}{2}{15/15}{H1: Seating Proximity and Honesty}{0}}
+\headcommand {\beamer@framepages {15}{15}}
+\headcommand {\slideentry {2}{3}{3}{16/16}{H1: Seating Proximity and Honesty}{0}}
+\headcommand {\beamer@framepages {16}{16}}
+\headcommand {\beamer@subsectionpages {14}{16}}
+\headcommand {\beamer@subsectionentry {0}{2}{4}{17}{H2: Performance and Homework Behaviors}}
+\headcommand {\slideentry {2}{4}{1}{17/17}{H2: Performance and Homework Behaviors}{0}}
+\headcommand {\beamer@framepages {17}{17}}
+\headcommand {\beamer@sectionpages {11}{17}}
+\headcommand {\beamer@subsectionpages {17}{17}}
+\headcommand {\sectionentry {3}{Discussion}{18}{Discussion}{0}}
+\headcommand {\slideentry {3}{0}{1}{18/18}{}{0}}
+\headcommand {\beamer@framepages {18}{18}}
+\headcommand {\beamer@subsectionpages {18}{18}}
+\headcommand {\beamer@subsectionentry {0}{3}{1}{19}{Limitations}}
+\headcommand {\slideentry {3}{1}{1}{19/19}{Limitations}{0}}
+\headcommand {\beamer@framepages {19}{19}}
+\headcommand {\beamer@subsectionpages {19}{19}}
+\headcommand {\beamer@subsectionentry {0}{3}{2}{20}{Future Research}}
+\headcommand {\slideentry {3}{2}{1}{20/20}{Future Research}{0}}
+\headcommand {\beamer@framepages {20}{20}}
+\headcommand {\slideentry {3}{2}{2}{21/21}{Future Research}{0}}
+\headcommand {\beamer@framepages {21}{21}}
+\headcommand {\beamer@partpages {1}{21}}
+\headcommand {\beamer@subsectionpages {20}{21}}
+\headcommand {\beamer@sectionpages {18}{21}}
+\headcommand {\beamer@documentpages {21}}
+\headcommand {\gdef \inserttotalframenumber {21}}

@@ -1,0 +1,3 @@
+\beamer@sectionintoc {1}{Class Model}{3}{0}{1}
+\beamer@sectionintoc {2}{Best Model}{7}{0}{2}
+\beamer@sectionintoc {3}{Q\&A}{11}{0}{3}

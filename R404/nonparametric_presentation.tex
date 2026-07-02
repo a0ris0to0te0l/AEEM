@@ -1,0 +1,486 @@
+\documentclass{beamer} % Use handout to get rid of repeated slides
+\usetheme{AnnArbor}
+\usecolortheme{default}
+\usefonttheme{professionalfonts}
+\usepackage{mathpazo}
+\usepackage{listings}
+\usepackage{xcolor}
+
+% Define colors
+\definecolor{myred}{RGB}{163,0,0}
+\definecolor{ttcolor}{RGB}{0,0,1}%{RGB}{163,0,0}
+\definecolor{mygray}{RGB}{248,249,250} 
+\definecolor{mygreen1}{RGB}{0,96,0}
+\definecolor{mygreen2}{RGB}{229,239,229}
+\definecolor{aristotelgreen}{HTML}{008A44}
+\definecolor{aristotelred}{HTML}{9E0101}
+\definecolor{aristotelgrey}{HTML}{2E2E2E}
+\definecolor{aristoteldarkred}{HTML}{500101}
+\definecolor{aristotelorange}{HTML}{FF8C00}
+
+\setbeamertemplate{theorem}[ams style]
+\setbeamertemplate{theorems}[numbered]
+
+\usepackage{etoolbox}
+\undef{\definition}
+\theoremstyle{definition}
+\newtheorem{definition}{\translate{Definition}}
+\hypersetup{
+colorlinks=true,
+linkcolor=aristotelorange,   % color for normal internal links
+citecolor=aristotelgreen,   % color for citation links
+urlcolor=aristotelgreen      % color for external links
+}
+
+\setbeamercolor{palette primary}{bg=aristotelred, fg=white}
+\setbeamercolor{palette secondary}{bg=aristoteldarkred, fg=white}
+\setbeamercolor{palette tertiary}{bg=black, fg=white} 
+
+\setbeamercolor{title}{fg=white, bg=aristotelred} % Title text color
+\setbeamercolor{subtitle}{fg=white, bg=aristotelred} % Subtitle text color
+\setbeamercolor{background canvas}{bg=aristotelgrey} % Background for content canvas
+\setbeamercolor{normal text}{fg=white} % Normal text color
+\setbeamercolor{titlegraphic}{bg=mygray} % Background color for title graphic area
+\setbeamercolor{frametitle}{fg=white, bg=aristoteldarkred}
+
+% Change color of numbered circles in the table of contents
+\setbeamercolor{section number projected}{bg=white, fg=black}
+\setbeamercolor{subsection number projected}{bg=aristotelred, fg=aristotelgrey}
+\setbeamercolor{subsection number projected}{bg=aristotelorange, fg=white}
+
+\setbeamercolor{block title}{fg=white,bg=mygreen1}
+\setbeamercolor{block body}{fg=black,bg=mygreen2}
+
+
+\lstdefinestyle{rstyle}%
+{language=[LaTeX]TeX,
+	basicstyle=\footnotesize\ttfamily,
+	backgroundcolor = \color{mygray},
+	commentstyle=\slshape\color{green!50!black},
+	keywordstyle=\color{blue},
+	identifierstyle=\color{blue},
+	stringstyle=\color{orange},
+	%escapechar=\#,
+	rulecolor = \color{mygray}, 
+	showstringspaces = false,
+	showtabs = false,
+	tabsize = 2,
+	emphstyle=\color{red},
+	frame = single} 
+
+\begin{document}
+	\title[Non param. density \& regression]{Nonparametric Density \& Regression Estimation
+	}
+	\subtitle[Shorter Version?]{Applied on MSE Returns}
+	\author[Riste Petrov]{Riste Petrov \\ \href{mailto:riste@uni-sofia.bg}{riste@uni-sofia.bg}}
+	\institute[AEEM - Sofia University]{AEEM - Sofia University St. Kliment Ohridski}
+	\titlegraphic{\includegraphics[scale=0.5]{8.1-logo SU ENG White horizontal.pdf}}
+	\date{\today}
+	
+	\begin{frame}[fragile]
+		\titlepage
+	\end{frame}
+	
+	\begin{frame}[fragile]
+		\frametitle{Contents}
+		\tableofcontents[]
+	\end{frame}
+	
+	\section{Introduction}
+	\subsection{Approach}
+	
+	\begin{frame}[fragile]
+		\frametitle{Bibliography Basis}
+		\framesubtitle{Theory}
+		The main article used for these materials and research was \textbf{Nonparametric Density and Regression Estimation} (2001) by John DiNardo and Justin L. Tobias.\\
+		\vspace{1em}
+		
+		Key limitations and findings of the technique include:
+		\begin{itemize}
+			\item Limitations in selecting appropriate bandwidth related to over-smoothing and under-smoothing.
+			\item Calculation of standard errors or other measures of model accuracy.
+		\end{itemize}
+	\end{frame}
+	
+	
+	
+	
+	\begin{frame}[fragile]
+		\frametitle{Similarity to Value at Risk (VaR)}
+		\framesubtitle{Theory}
+		What actually VaR is, and how it is similar?
+		\begin{itemize}
+			\item Value at Risk (VaR) is a financial metric used to assess the potential loss in value of an asset or portfolio over a defined period for a given confidence interval. The concept is typically applied in risk management to quantify the level of financial risk within a firm or investment portfolio. 
+			\item One tailed test, usually set at 0.05 or 0.01 percentile.
+		\end{itemize}
+		\begin{theorem}[Value at Risk]
+			$ \text{VaR}_{\alpha} = -\inf\{ x \in \mathbb{R} : P(X \leq x) \geq \alpha \}$
+		\end{theorem}
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Kernel Density Estimation (KDE) similarity}
+		\framesubtitle{Practical Approach}
+		Using the daily, weekly, monthly, yearly returns, we could better visualize the possible returns using a KDE than with just using the VaR formula.
+		\begin{center}
+			\includegraphics[width=0.75\textwidth, height=0.45\textwidth]{./version 2/hist_outputs/hist_fd_gaussian_bw_nrd0.pdf}
+		\end{center}
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Kernel Density Estimation (KDE) similarity}
+		\framesubtitle{Practical Approach}
+		\begin{center}
+		\includegraphics[width=0.75\textwidth, height=0.45\textwidth]{./version 2/hist_outputs_weekly/hist_fd_gaussian_bw_nrd0.pdf}
+	\end{center}
+	\end{frame}
+	
+		\begin{frame}
+		\frametitle{Kernel Density Estimation (KDE) similarity}
+		\framesubtitle{Practical Approach}
+		\begin{center}
+			\includegraphics[width=0.75\textwidth, height=0.45\textwidth]{./version 2/hist_outputs_monthly/hist_fd_gaussian_bw_nrd0.pdf}
+		\end{center}
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Kernel Density Estimation (KDE) similarity}
+		\framesubtitle{Practical Approach}
+		\begin{center}
+			\includegraphics[width=0.75\textwidth, height=0.45\textwidth]{./version 2/hist_outputs_yearly/hist_bins30_gaussian_bw_nrd0.pdf}
+		\end{center}
+	\end{frame}
+	
+	\subsection{Theory}
+	\begin{frame}
+		\frametitle{Kernel Density Estimation (KDE)}
+		\framesubtitle{Theory}
+		Kernel Density Estimation (KDE) is a non-parametric way to estimate the probability density function of a random variable. It smooths the observed data points to create a continuous probability density function.
+		
+		$$  \hat{f}(u) = \frac{1}{nh} \sum\nolimits_{i=1}^{n} K \left( \frac{u - u_i}{h} \right) $$ 
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{Bandwidth Selection}
+		\framesubtitle{Theory}
+		Three most used bandwidths are:
+		\begin{itemize}
+			\item Normal Reference Distribution (nrd / 0) $$ h_{nrd} = 0.9 sn^{-\frac{1}{5}}, \text{when s= 0, then h=1 in nrd0}$$
+			\item Sheather - Jones (SJ) $$ h_{SJ} = s \left( \frac{4}{3n} \right)^{\frac{1}{5}} $$
+			\item Unbiased Cross Validation (ucv) $$ h_{ucv} = arg \min_h \left( \frac{1}{n} \sum\nolimits_{i=1}^{n} K_h (x_i - u) f(u) du - \frac{1}{n} \sum\nolimits_{i=1}^{n} K_h (x_i) \right) $$
+		\end{itemize}
+		
+	\end{frame}
+	
+	
+	\begin{frame}
+		\frametitle{Kernel Selection}
+		\framesubtitle{Theory}
+		   \begin{itemize}
+			\item Rectangular - $\mathbb{I}$ - flat influence over the bandwidth.
+			$ K(u) = \frac{1}{2} $
+			 			
+			\item Epanechnikov - $\mathbb{I}$ - Best performing for MISE. \quad $ K(u) = \frac{3}{4}(1 - u^2)$
+		
+			\item Biweight - $\mathbb{I}$ - smoother estimate. \quad 
+			$ K(u) = \frac{15}{16}(1 - u^2)^2 $
+			
+			\item Triangular - $\mathbb{I}$ - Balance between ease of computation and smoothness
+			$$ K(u) = (1 - |u|) $$
+			
+			\item Gaussian 	$$ K(u) = \frac{1}{\sqrt{2\pi}\sigma'} e^{-\frac{u^2}{2}} $$
+		\end{itemize}
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Local Linear Regression}
+		\framesubtitle{Theory}
+		Local Linear Regression is a non-parametric regression method that fits a linear function to a local subset of the data around each point of interest. This approach allows for flexibility in estimating complex relationships in the data.
+		$$
+		\hat{y}(x_0) = \frac{\sum_{i=1}^{n} K\left(\frac{x_i - x_0}{h}\right) y_i}{\sum_{i=1}^{n} K\left(\frac{x_i - x_0}{h}\right)}
+		$$
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Quintile Regression}
+		\framesubtitle{Theory}
+		Quintile Regression is a statistical technique that estimates the conditional median or other quantiles of the response variable, allowing for a comprehensive analysis of the relationship between variables beyond just the mean.
+		$$
+		    Q_y(\tau | X) = \frac{\sum_{i=1}^{n} K\left(\frac{y_i - Q_y(\tau | X)}{h}\right) y_i}{\sum_{i=1}^{n} K\left(\frac{y_i - Q_y(\tau | X)}{h}\right)}
+		$$
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Mean Integrated Square Error}
+		\framesubtitle{Theory}
+		The Mean Integrated Square Error (MISE) is used to evaluate the performance of density estimators. It takes into account both bias and variance, measuring how well the estimated density approximates the true density.
+		$$
+		\text{MISE} = \int \left( \hat{f}(x) - f(x) \right)^2 dx
+		$$
+		$$
+		\text{MISE} = \text{Bias}^2 + \text{Variance}
+		$$
+	\end{frame}
+		
+	
+	\section{Empirical Approach}
+	\subsection{Bandwidth calculation}
+	\begin{frame}
+		\frametitle{Bandwidth calculation}
+		\framesubtitle{Across periods}
+		  % First table
+		 \begin{table}[H]
+		 	\centering
+		 	\resizebox{\textwidth}{!}{%
+		 		\begin{tabular}{cccccc}
+		 			\hline
+		 			Period  & n\_points & Data Range & nrd0   & SJ      & UCV    \\
+		 			\hline
+		 			Daily   & 4057      & 6031        & 297.83 & 166.18  & NA     \\
+		 			Weekly  & 862       & 6027        & 405.89 & 295.50  & NA     \\
+		 			Monthly & 199       & 6016        & 547.28 & 508.03  & 562.38 \\
+		 			Yearly  & 17        & 5833        & 941.36 & 1271.17 & NA     \\
+		 			\hline
+		 		\end{tabular}%
+		 	}
+		 \end{table}
+		 
+		 % Second table
+		 \begin{table}[H]
+		 	\centering
+		 	\resizebox{\textwidth}{!}{%
+		 		\begin{tabular}{cccccc}
+		 			\hline
+		 			Period  & n\_points & Data Range & nrd0\_pct\_of\_range & SJ\_pct\_of\_range & UCV\_pct\_of\_range \\
+		 			\hline
+		 			Daily   & 4057      & 6031        & 4.94                 & 2.76               & NA                  \\
+		 			Weekly  & 862       & 6027        & 6.73                 & 4.90               & NA                  \\
+		 			Monthly & 199       & 6016        & 9.10                 & 8.44               & 9.35                \\
+		 			Yearly  & 17        & 5833        & 16.14                & 21.79              & NA                  \\
+		 			\hline
+		 		\end{tabular}%
+		 	}
+		 \end{table}
+		
+	\end{frame}
+	
+	
+	\subsection{Kernel Density Estimation}
+	\begin{frame}
+		\frametitle{KDE Overlay}
+		\framesubtitle{Bandwidth}
+		\begin{center}
+		\includegraphics[width=0.75\textwidth, height=0.45\textwidth]{./version 2/hist_outputs/bw_overlays/bw_bw_nrd0_fd_overlay.pdf}
+		\end{center}
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{KDE Overlay}
+		\framesubtitle{Bandwidth}
+		\begin{center}
+			\includegraphics[width=0.75\textwidth, height=0.45\textwidth]{./version 2/hist_outputs_weekly/bw_overlays/bw_bw_nrd0_fd_overlay.pdf}
+		\end{center}
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{KDE Overlay}
+		\framesubtitle{Bandwidth}
+		\begin{center}
+			\includegraphics[width=0.75\textwidth, height=0.45\textwidth]{./version 2/hist_outputs_monthly/bw_overlays/bw_bw_nrd0_fd_overlay.pdf}
+		\end{center}
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{KDE Overlay}
+		\framesubtitle{Bandwidth}
+		\begin{center}
+			\includegraphics[width=0.75\textwidth, height=0.45\textwidth]{./version 2/hist_outputs_yearly/bw_overlays/bw_bw_nrd0_fd_overlay.pdf}
+		\end{center}
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{KDE Overlay}
+		\framesubtitle{Kernel}
+		\begin{center}
+			\includegraphics[width=0.75\textwidth, height=0.45\textwidth]{./version 2/hist_outputs/kernel_overlays/kernel_rectangular_fd_overlay.pdf}
+		\end{center}
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{KDE Overlay}
+		\framesubtitle{Kernel}
+		\begin{center}
+			\includegraphics[width=0.75\textwidth, height=0.45\textwidth]{./version 2/hist_outputs_weekly/kernel_overlays/kernel_rectangular_fd_overlay.pdf}
+		\end{center}
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{KDE Overlay}
+		\framesubtitle{Kernel}
+		\begin{center}
+			\includegraphics[width=0.75\textwidth, height=0.45\textwidth]{./version 2/hist_outputs_monthly/kernel_overlays/kernel_rectangular_fd_overlay.pdf}
+		\end{center}
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{KDE Overlay}
+		\framesubtitle{Kernel}
+		\begin{center}
+			\includegraphics[width=0.75\textwidth, height=0.45\textwidth]{./version 2/hist_outputs_yearly/kernel_overlays/kernel_rectangular_fd_overlay.pdf}
+		\end{center}
+	\end{frame}
+	
+	\subsection{Local Linear Regressions} 
+	\begin{frame}
+		\frametitle{Local Linear Regressions}
+		\framesubtitle{Daily}
+		\begin{center}
+			\includegraphics[width=0.75\textwidth, height=0.45\textwidth]{./version 2/local_regressions/daily/daily_locreg_rectangular_nrd0.pdf}
+		\end{center}
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Local Linear Regressions}
+		\framesubtitle{Weekly}
+		\begin{center}
+			\includegraphics[width=0.75\textwidth, height=0.45\textwidth]{./version 2/local_regressions/weekly/weekly_locreg_rectangular_nrd0.pdf}
+		\end{center}
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Local Linear Regressions}
+		\framesubtitle{Monthly}
+		\begin{center}
+			\includegraphics[width=0.75\textwidth, height=0.45\textwidth]{./version 2/local_regressions/monthly/monthly_locreg_rectangular_nrd0.pdf}
+		\end{center}
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Local Linear Regressions}
+		\framesubtitle{Yearly}
+		\begin{center}
+			\includegraphics[width=0.75\textwidth, height=0.45\textwidth]{./version 2/local_regressions/yearly/yearly_locreg_rectangular_nrd0.pdf}
+		\end{center}
+	\end{frame}
+	
+	\subsection{Quantile Regressions}
+	\begin{frame}
+		\frametitle{Quantile Regressions}
+		\framesubtitle{Daily}
+		\begin{center}
+			\includegraphics[width=0.75\textwidth, height=0.45\textwidth]{./version 2/quantile_regressions/daily/quantile_overlays/quantiles_rectangular_nrd0.pdf}
+		\end{center}
+	\end{frame}
+	\begin{frame}
+		\frametitle{Quantile Regressions}
+		\framesubtitle{Weekly}
+		\begin{center}
+			\includegraphics[width=0.75\textwidth, height=0.45\textwidth]{./version 2/quantile_regressions/weekly/quantile_overlays/quantiles_rectangular_nrd0.pdf}
+		\end{center}
+	\end{frame}
+	\begin{frame}
+		\frametitle{Quantile Regressions}
+		\framesubtitle{Monthly}
+		\begin{center}
+			\includegraphics[width=0.75\textwidth, height=0.45\textwidth]{./version 2/quantile_regressions/monthly/quantile_overlays/quantiles_rectangular_nrd0.pdf}
+		\end{center}
+	\end{frame}
+	\begin{frame}
+		\frametitle{Quantile Regressions}
+		\framesubtitle{Yearly}
+		\begin{center}
+			\includegraphics[width=0.75\textwidth, height=0.45\textwidth]{./version 2/quantile_regressions/yearly/quantile_overlays/quantiles_rectangular_nrd0.pdf}
+		\end{center}
+	\end{frame}
+	
+	\subsection{Non-linear Quantile Regression vs Quantile Regression Estimation}
+
+	\begin{frame}
+		\frametitle{Non-linear Comparison}
+		\framesubtitle{Daily}
+		\begin{center}
+			\includegraphics[width=0.75\textwidth, height=0.45\textwidth]{./version 2/quantile_regressions/daily/comparison/comparison_tau0.975.pdf}
+		\end{center}
+	\end{frame}
+	\begin{frame}
+		\frametitle{Non-linear Comparison}
+		\framesubtitle{Weekly}
+		\begin{center}
+			\includegraphics[width=0.75\textwidth, height=0.45\textwidth]{./version 2/quantile_regressions/weekly/comparison/comparison_tau0.975.pdf}
+		\end{center}
+	\end{frame}
+	\begin{frame}
+		\frametitle{Non-linear Comparison}
+		\framesubtitle{Monthly}
+		\begin{center}
+			\includegraphics[width=0.75\textwidth, height=0.45\textwidth]{./version 2/quantile_regressions/monthly/comparison/comparison_tau0.975.pdf}
+			
+		\end{center}
+	\end{frame}
+	\begin{frame}
+		\frametitle{Non-linear Comparison}
+		\framesubtitle{Yearly}
+		\begin{center}
+			\includegraphics[width=0.75\textwidth, height=0.45\textwidth]{./version 2/quantile_regressions/yearly/comparison/comparison_tau0.975.pdf}
+		\end{center}
+	\end{frame}
+	
+	\subsection{MISE analysis}
+
+	\begin{frame}
+		\frametitle{Mean Integrated Square Error}
+		\framesubtitle{Best Model Estimates - Daily and Weekly}
+		\centering
+		\begin{table}[h]
+			\centering
+			\begin{tabular}{ccc}
+				\hline
+				Period  & Config                      & MISE            \\
+				\hline
+				Daily   & gaussian\_nrd0\_0.975       & 97429.72  \\
+				Daily   & gaussian\_nrd0\_0.5         & 122200.11 \\
+				Daily   & gaussian\_nrd0\_0.75        & 122700.55 \\
+				\hline
+				Weekly  & gaussian\_nrd0\_0.975       & 43577.16  \\
+				Weekly  & gaussian\_nrd0\_0.75        & 46878.43  \\
+				Weekly  & gaussian\_nrd0\_0.5         & 93805.95  \\
+				\hline
+			\end{tabular}
+		\end{table}
+	\end{frame}
+	
+	% Frame for Monthly and Yearly MISE Values
+	\begin{frame}
+		\frametitle{Mean Integrated Square Error}
+		\framesubtitle{Best Model Estimates - Monthly and Yearly}
+		
+		\centering
+		\begin{table}[h]
+			\centering
+			\begin{tabular}{ccc}
+				\hline
+				Period  & Config                      & MISE            \\
+				\hline
+				Monthly & gaussian\_SJ\_0.75          & 27661.85  \\
+				Monthly & gaussian\_nrd0\_0.75        & 28499.24  \\
+				Monthly & gaussian\_ucv\_0.75         & 28850.62  \\
+				\hline			
+				Yearly  & epanechnikov\_nrd0\_0.975   & 25895.93  \\
+				Yearly  & biweight\_nrd0\_0.975       & 25895.93  \\
+				Yearly  & rectangular\_nrd0\_0.975     & 25895.93  \\
+				\hline
+			\end{tabular}
+		\end{table}
+	\end{frame}
+	
+	\section{Thank you for your attention!}
+	\subsection{Q\&A}
+	
+	\begin{frame}
+	\frametitle{Thank you for your attention}
+	\begin{center}
+		Q \& A !
+	\end{center}
+	\end{frame}
+	
+\end{document}

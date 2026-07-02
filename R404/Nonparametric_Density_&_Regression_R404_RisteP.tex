@@ -1,0 +1,598 @@
+\documentclass[]{article}
+\usepackage[a4paper,includeheadfoot,margin=2.54cm]{geometry}
+
+\usepackage{array}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{tabularx}
+\usepackage[backend=biber,style=apa]{biblatex} % Use biblatex with biber
+\usepackage{hyperref}
+\hypersetup{
+	colorlinks=true,      % Enable colored links
+	linkcolor=black,     % Color of internal links
+	citecolor=black,     % Color of citations
+	filecolor=black,     % Color of file li{\tiny nks
+	urlcolor=black,      % Color of extern}al links
+	pdfborder={0 0 0},   % No visible border
+	pdfinfo={
+		Title={Nonparametric Density Regression Estimation},
+		Author={Riste Petrov},
+		Subject={R404-AEEM 25/26},
+	}
+}
+% Opening
+\title{AEEM R404 - Research Paper \\
+	Nonparametric Density \& \\
+	Regression Estimation\\
+	Applied on MSE Returns}
+\author{Riste Petrov}
+
+\begin{document}
+	
+	\maketitle
+	
+	\begin{abstract}
+		This study investigates the empirical analysis of the MBI10 index on the Macedonian Stock Exchange, utilizing Kernel Density Estimation (KDE) and various non-parametric and semi-parametric regression techniques to assess stock return distributions and associated challenges. One of the focal points is the impact of bandwidth selection on KDE, revealing that variations in sample size significantly influence density estimates, with larger samples producing broader distributions that may obscure critical details. The research demonstrates that while non-parametric methods enhance modeling flexibility and accuracy, simpler quantile regression models yield superior predictive power compared to more complex polynomial approaches. Furthermore, bootstrapping techniques were employed to derive 95\% confidence bands for median regression analysis, highlighting uncertainties in estimating stock returns, particularly within less predictable samples. The findings underscore essential insights into stock market dynamics and risk management, providing valuable guidance for investors on the Macedonian Stock Exchange and contributing to broader financial analysis discourse.
+	\end{abstract}
+	
+	\tableofcontents
+	\newpage
+	
+	\section{Introduction}
+	This document aims to deepen our understanding of the individual concepts covered in R404 by replicating and expanding upon findings from assigned research publications. Each student is tasked with exploring a specific paper, with the goal of applying the techniques discussed during lectures. In my case, the assigned article, "Nonparametric Density and Regression Estimation" by DiNardo and Tobias (2001), presented a unique challenge due to the absence of available datasets. This allowed for a creative approach in mastering and applying the paper's concepts.\\
+	
+	
+	Two significant challenges identified in the paper were the issue of setting the bandwidth for probability density functions, as well as the difficulty in calculating reliable standard errors. To practically engage with these challenges, I selected the MBI10 Index, the sole index of the Macedonian Stock Exchange, for analysis. By using data from the index's entire history while deliberately excluding the speculative period from 2005 to June 15, 2009. This approach ensures a more stable dataset, minimizing market anomalies. From this dataset, were calculated the daily, weekly, and monthly percentage returns, yielding four unique distributions for analysis.\\
+	
+	
+	\subsection{Practical Applications for Investors}
+	
+	The insights gained from this analysis can serve as a valuable resource for investors and stakeholders in the Macedonian financial market. Although there weren't made calculations of Value at Risk (VaR), instead employing kernel density functions and nonparametric or semi-parametric regressions offers robust alternatives for understanding return distributions. These techniques derive underlying probability distributions, enabling investors to assess risks and forecast potential losses without strict parametric assumptions. Ultimately, this study seeks to replicate and expand established methods while enhancing risk assessment and investment optimization within the Macedonian stock market.
+	
+	\section{Discussed concepts}
+	In order to understand how median \& quantile regressions work we were introduced to the concepts of semi-parametric regressions. Which aim to minimize the following difference:
+	
+	$$ \min_{b_0} \sum\nolimits_{i=1}^{n} | Y_i - X_i' * b_0 |  $$
+	
+	Or more precisely we are minimizing:
+	
+	$$ \min_{\beta} \sum\nolimits_{i=1}^{n} \rho_q * | Y_i - X_i' * \beta |  $$
+	
+	Where:
+	\begin{itemize}
+		 \item [] \(\rho_q(u) = u^{q} - \mathbb{I}_{\{u < 0\}}\) for \(0 < q < 1\) is the check function.
+		\item [] For \(q = 0.5\), \(\rho_{0.5}(u) = \frac{|u|}{2}\), which corresponds to the least absolute deviations (LAD) regression case, specifically median regression.
+		\item [] For applications similar to VaR (Value at Risk) running 0.05 and 0.95 give our extremes worst and best case scenarios.
+		$$  \rho_{0.025}(u) = \frac{|u|}{40} \quad \text{and} \quad \rho_{0.975}(u) = \frac{|u|}{40} $$ 
+		\item [] \(Y_i\) represents the observed values.
+		\item [] \(X_i'\) is the transpose of the vector of predictors for observation \(i\).
+		\item [] \(\beta_0\) is the coefficient vector to be optimized.
+	\end{itemize}
+	
+	Which in matrix form looks like:
+	
+	$$ Est.Asy.Var(b_q) = (X'X)^{-1}X'DX(X'X)^{-1}  $$
+	
+	Where D is a diagonal matrix of weights:
+	
+		$$ d_i =
+		\begin{cases}
+			\left[\frac{q}{f_u(0)}\right]^2, & \text{if } y_i - x' \beta > 0 \\
+			\left[\frac{1 - q}{f_u(0)}\right]^2, & \text{if } y_i - x' \beta \leq 0
+		\end{cases} $$
+	
+	If there is true normal disturbance of density:
+	
+	$$ f_u(0) = \frac{1}{\sqrt{2 \pi} \sigma '} $$
+	
+	so the asymptotic covariance simplifies to:
+	
+	$$ Est.Asy.Var(b_{0.5}) = \frac{\pi\hat{\sigma}^2}{2}*(X'X)^{-1} $$
+	$$ Est. Asy. Var(b_{0.05 / 0.95}) = \frac{\pi \hat{\sigma}^2}{20} (X'X)^{-1} $$
+	
+	Because the distribution of $ \varepsilon $ is usually unknown, therefore $f_u(0)$ is also unknown and has to be estimated. Commonly used estimation approach is the kernel density estimator (KDE) evaluated at 0.
+	
+	$$ \hat{f}(u) = \frac{1}{nh} \sum\nolimits_{i=1}^{n} K \left( \frac{u - u_i}{h} \right) $$
+	
+	Using the residuals ($e_i$) the formula has the following form:
+	
+	$$ \hat{f}(0) = \frac{1}{nh} \sum\nolimits_{i=1}^{n} K \left( \frac{e_i}{h} \right) $$
+	
+	Example using Gaussian kernel, where h = 1:
+	
+	$$ \hat{f}(0) = \frac{1}{n} \sum_{i=1}^{n} \frac{1}{\sqrt{2\pi}} * e^{-\frac{u_i^2}{2}} $$
+	
+	
+	Where:
+	\begin{itemize}
+		\item [] h - bandwidth
+		\item [] K - kernel
+	\end{itemize}
+	
+	
+	KDE is asymptotically valid, but small-sample perofmance can be sensitive to bandwidth choice.
+	
+	A convenient rule-of-thumb (Normal refference rule - nrd0) is:
+	
+	$$ h_{nrd} = 0.9 sn^{-\frac{1}{5}}	$$
+	
+	Where:
+	\begin{itemize}
+		\item [] s - standard deviation of sample
+		\item [] n - number of observations in the sample
+	\end{itemize}
+	
+	
+	\section{Undiscussed concepts}
+	
+	\subsection{Alternative bandwidths}
+	
+	\begin{enumerate}
+		\item Normal Reference Distribution, Adjusted
+		\item Sheather - Jones
+		\item Unbiased Cross - Validation
+	\end{enumerate} 
+	
+	\subsubsection{Normal Reference Distribution, Adjusted (nrd0)}
+	 Used when there is a skewed but fairly close to normal distribution.
+	 
+	 $$ h_{nrd0} = 0.9 sn^{-\frac{1}{5}}, \text{ if} \quad s = 0, \text{ then} \quad h = 1. $$
+	 
+	 Where:
+	 \begin{itemize}
+	 	\item [] s - standard deviation of sample
+	 	\item [] n - number of observations in the sample
+	 \end{itemize}
+	 
+	\subsubsection{Sheather - Jones (SJ)}
+	Used in complex datasets with multiple modes and other non-standard behavior in the tails.
+	
+	$$ h_{SJ} = s \left( \frac{4}{3n} \right)^{\frac{1}{5}} $$
+	
+	Where:
+	\begin{itemize}
+		\item [] s - standard deviation of sample
+		\item [] n - number of observations in the sample
+	\end{itemize}
+	
+	\subsubsection{Unbiased Cross-Validation (ucv)}
+	Used with high dimensional data, where computational cost is not a factor.	
+	
+	$$ h_{ucv} = arg \min_h \left( \frac{1}{n} \sum\nolimits_{i=1}^{n} K_h (x_i - u) f(u) du - \frac{1}{n} \sum\nolimits_{i=1}^{n} K_h (x_i) \right) $$
+	
+	Where:
+	\begin{itemize}
+		\item [] \( s \) - standard deviation of the sample
+		\item [] \( n \) - number of observations in the sample
+		\item [] \( K_h \) - kernel function scaled by bandwidth \( h \)
+		\item [] \( f(u) \) - estimated density function
+	\end{itemize}
+	
+	\subsection{Alternative kernels}
+	
+	\subsubsection{Rectangular Kernel}
+	Used for simple estimation with equal bandwidth across all points.
+	
+	$$K(x) = 
+	\begin{cases} 
+		\frac{1}{2h} & \text{if } |x| \leq h \\
+		0 & \text{otherwise}
+	\end{cases} $$
+			
+	\subsubsection{Epanechnikov Kernel}
+	Used to minimize mean integrated squared error, and to gibe a smoother estimation than the rectangular kernel. 
+	$$
+	K(x) = 
+	\begin{cases} 
+		\frac{3}{4}(1 - x^2) & \text{if } |x| \leq 1 \\
+		0 & \text{otherwise}
+	\end{cases}
+	$$
+	
+	\subsubsection{Biweight Kernel}
+	Used to get a smooth estimation and when you want to minimize the influence of distant points.
+	$$
+	K(x) = 
+	\begin{cases} 
+		\frac{15}{16}(1 - x^2)^2 & \text{if } |x| \leq 1 \\
+		0 & \text{otherwise}
+	\end{cases}	
+	$$
+	
+	
+	\subsubsection{Triangular Kernel}
+	Used for linear weighting that provides balance between bias and variance in estimation.
+	
+	$$
+	K(x) = 
+	\begin{cases} 
+		1 - |x| & \text{if } |x| \leq 1 \\
+		0 & \text{otherwise}
+	\end{cases}
+	$$
+	
+	\subsection{Alternative regressions}
+	
+	\subsubsection{Local Linear Regression}
+	Used for datasets with non-linear patterns, without the usage of parameters (independent variables). 
+	
+	$$
+	\hat{y}(x_0) = \frac{\sum_{i=1}^{n} K\left(\frac{x_i - x_0}{h}\right) y_i}{\sum_{i=1}^{n} K\left(\frac{x_i - x_0}{h}\right)}
+	$$
+	
+	\subsubsection{Partial Linear Regression}
+	There may be some linear but also there are also non-linear patterns, taking advantage of both linear and non-linear methods.
+	
+	$$ 	y = X\beta + \frac{\sum_{i=1}^{n} K\left(\frac{z_i - z_0}{h}\right) y_i}{\sum_{i=1}^{n} K\left(\frac{z_i - z_0}{h}\right)} + \epsilon$$
+
+	\subsection{Mean Integrated Square Error (MISE)}
+	is used as a metric for assessing model performance in regression analysis, serving as a substitute for Mean Squared Error (MSE). It provides a comprehensive evaluation by considering the entire distribution of the response variable. By integrating the squared differences across the entire range of the response variable, MISE captures the overall accuracy of the model, making it particularly useful in contexts such as quantile regression. Specifically, it enables the measurement of standard errors in quantile regressions, allowing for a more robust assessment of variability and uncertainty in predictions at different quantiles.
+	
+	$$ MISE = \int (\hat{f}(y) - f(y))^2 dy $$
+	
+	\newpage
+	
+	\section{Empirical approach}
+	The empirical analysis of the Macedonian Stock Exchange, particularly focusing on the MBI10 index, employs Kernel Density Estimation (KDE) to assess the distribution of stock returns. Central to this process is the examination of how variations in bandwidth affect the density distributions. Adjusting the bandwidth can significantly influence the smoothness of these density estimates; a smaller bandwidth may lead to excessive noise while a larger one could oversmooth the data. By testing different bandwidths, valuable insights can be extracted regarding the distribution's shape, enabling the identification of potential outliers and extreme cases of loss or profit.\\
+	
+	In addition to density estimation, various non-parametric and semi-parametric regression techniques are utilized to tackle issues associated with unreliable standard errors in analyzing MBI10 returns. Non-parametric methods avoid assuming a specific functional form of the relationship between independent and dependent variables, thus enhancing accuracy. On the other hand, semi-parametric approaches blend parametric and non-parametric elements, providing greater flexibility in modeling while retaining certain assumptions. This combination of methods significantly improves the robustness of the analysis.\\
+	
+	The insights gleaned from the regression analysis are crucial for investors considering different investment time frames. By focusing on the 2.5th and 97.5th percentiles of the return distribution, which correspond to confidence intervals at a significance level of α = 0.05, investors can better understand potential extreme outcomes in terms of losses and profits. This empirical approach not only illustrates the behavior of stock returns under varying conditions but also aids investors in making informed decisions regarding risk management and investment strategies.
+	
+	\subsection{Bandwidth calculation}
+	From the bandwidth calculation of based on the different periods / distributions, we can conclude that as the sample size decreases from daily to yearly observations, we observe significant variations in the bandwidth estimates. For example, the yearly period has considerably larger bandwidth values, which indicates a broader distribution compared to its smaller sample counterparts. This trend may suggest that less data leads to a greater smoothing effect in density estimation, obscuring finer details in the underlying distribution.	
+	
+	\begin{table}[H]
+		\centering
+		\begin{tabular}{cccccc}
+			\hline
+			period  & n\_points & data\_range & nrd0   & SJ      & UCV    \\
+			\hline
+			daily   & 4057      & 6031        & 297.83 & 166.18  & NA     \\
+			weekly  & 862       & 6027        & 405.89 & 295.50  & NA     \\
+			monthly & 199       & 6016        & 547.28 & 508.03  & 562.38 \\
+			yearly  & 17        & 5833        & 941.36 & 1271.17 & NA     \\
+			\hline
+		\end{tabular}
+		\caption{Table of the calculated bandwidths}
+	\end{table}
+	
+	\begin{table}[H]
+		\centering
+		\begin{tabular}{cccccc}
+			\hline
+			period  & n\_points & data\_range & nrd0\_pct\_of\_range & SJ\_pct\_of\_range & ucv\_pct\_of\_range \\
+			\hline
+			daily   & 4057      & 6031        & 4.94                 & 2.76               & NA                  \\
+			weekly  & 862       & 6027        & 6.73                 & 4.90               & NA                  \\
+			monthly & 199       & 6016        & 9.10                 & 8.44               & 9.35                \\
+			yearly  & 17        & 5833        & 16.14                & 21.79              & NA                  \\
+			\hline
+		\end{tabular}
+		\caption{Table of bandwidth ratios}
+	\end{table}
+	
+	\subsection{Nonparametric Density Estimation}
+	What was observed empirically confirms the theory: in the asymptotic case (the daily-returns KDE is closest to this limit), the choice of bandwidth affects the smoothness of the KDE much more than the choice of kernel. 
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{./version 2/hist_outputs/bw_overlays/bw_bw_nrd0_fd_overlay.pdf}
+		\label{fig:Daily nrd0 bandwidth overlay}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+\		\includegraphics[width=\textwidth]{./version 2/hist_outputs/kernel_overlays/kernel_rectangular_fd_overlay.pdf}
+		\label{fig:Daily rectangular kernel overlay}
+	\end{figure}
+	
+
+	That conclusion cannot be confirmed for the small-sample case (yearly returns): with fewer observations and a distribution farther from normality, bandwidth and kernel choices exert comparable influence on the KDE.
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{./version 2/hist_outputs_yearly/bw_overlays/bw_bw_nrd0_fd_overlay.pdf}
+		\label{fig:Yearly nrd0 bandwidth overlay}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\		\includegraphics[width=\textwidth]{./version 2/hist_outputs_yearly/kernel_overlays/kernel_rectangular_fd_overlay.pdf}
+		\label{fig:Yearly rectangular kernel overlay}
+	\end{figure}
+	
+	In the mid-size sample cases (weekly and monthly), we can still observe the effects described by the theory but to a lesser extent.
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{./version 2/hist_outputs_weekly/bw_overlays/bw_bw_nrd0_fd_overlay.pdf}
+		\label{fig:Weekly nrd0 bandwidth overlay}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\		\includegraphics[width=\textwidth]{./version 2/hist_outputs_weekly/kernel_overlays/kernel_rectangular_fd_overlay.pdf}
+		\label{fig:Weekly rectangular kernel overlay}
+	\end{figure}
+	
+	In the monthly case, the UCV bandwidth was successfully optimized. Unlike the other distributions, it was not visualized as it did not provide any meaningful insight into the comparison and choice of bandwidth.
+		\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{./version 2/hist_outputs_monthly/bw_overlays/bw_bw_nrd0_fd_overlay.pdf}
+		\label{fig:Monthly nrd0 bandwidth overlay}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\		\includegraphics[width=\textwidth]{./version 2/hist_outputs_monthly/kernel_overlays/kernel_rectangular_fd_overlay.pdf}
+		\label{fig:Monthly rectangular kernel overlay}
+	\end{figure}
+	
+	
+	\subsection{Nonparametric Regression}
+	Local linear regressions were performed using the locfit library in R across all specified periods and distributions, as demonstrated in the associated plots. The results aligned closely with theoretical expectations and the kernel density estimate (KDE) analyses, revealing similar conclusions. Interestingly, the local regression results were less sensitive to both bandwidth and kernel choices in the yearly and monthly distributions compared to the daily distributions, which are closer to asymptotic behavior.
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{./version 2/local_regressions/daily/daily_locreg_rectangular_nrd0.pdf}
+		\label{fig:Daily local rectengular nrd0 agianst actual}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{./version 2/local_regressions/weekly/weekly_locreg_rectangular_nrd0.pdf}
+		\label{fig:Weekly local rectengular nrd0 agianst actual}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{./version 2/local_regressions/monthly/monthly_locreg_rectangular_nrd0.pdf}
+		\label{fig:Monthly local rectengular nrd0 agianst actual}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{./version 2/local_regressions/yearly/yearly_locreg_rectangular_nrd0.pdf}
+		\label{fig:Yearly local rectengular nrd0 agianst actual}
+	\end{figure}
+
+	\subsubsection{Kernel Overlays}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{./version 2/local_regressions/daily/kernel_overlays/kernel_rectangular_overlay.pdf}
+		\label{fig:Daily local rectangular kernel overlay}
+	\end{figure}
+		
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{./version 2/local_regressions/weekly/kernel_overlays/kernel_rectangular_overlay.pdf}
+		\label{fig:Weekly local rectangular kernel overlay}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{./version 2/local_regressions/monthly/kernel_overlays/kernel_rectangular_overlay.pdf}
+		\label{fig:Monthly local rectangular kernel overlay}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{./version 2/local_regressions/yearly/kernel_overlays/kernel_rectangular_overlay.pdf}
+		\label{fig:Yearly local rectangular kernel overlay}
+	\end{figure}
+	
+	\subsubsection{Bandwidth overlays}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{./version 2/local_regressions/daily/bw_overlays/bw_nrd0_overlay.pdf}
+		\label{fig:Daily local nrd0 bandwidth overlay}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{./version 2/local_regressions/weekly/bw_overlays/bw_nrd0_overlay.pdf}
+		\label{fig:Weekly local nrd0 bandwidth overlay}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{./version 2/local_regressions/monthly/bw_overlays/bw_nrd0_overlay.pdf}
+		\label{fig:Monthly local nrd0 bandwidth overlay}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{./version 2/local_regressions/yearly/bw_overlays/bw_nrd0_overlay.pdf}
+		\label{fig:Yearly local nrd0 bandwidth overlay}
+	\end{figure}
+	
+	\subsection{Semi-parametric Regression}
+	The authors also utilized quantile regressions to illustrate the fitting behavior across various bandwidths. Given that the data possesses a distinct structure and significance—specifically, in assessing daily possible returns—the analysis includes overlays of the quartiles. These overlays demonstrate how the quartiles evolve over time, influenced by factors such as volatility and market dynamics.
+	
+	\subsubsection{Quantile overlays}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{./version 2/quantile_regressions/daily/quantile_overlays/quantiles_rectangular_nrd0.pdf}
+		\label{fig:Daily quantily nrd0 rectengular quantile overlay}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{./version 2/quantile_regressions/weekly/quantile_overlays/quantiles_rectangular_nrd0.pdf}
+		\label{fig:Weekly quantily nrd0 rectengular quantile overlay}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{./version 2/quantile_regressions/monthly/quantile_overlays/quantiles_rectangular_nrd0.pdf}
+		\label{fig:Monthly quantily nrd0 rectengular quantile overlay}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{./version 2/quantile_regressions/yearly/quantile_overlays/quantiles_rectangular_nrd0.pdf}
+		\label{fig:Yearly quantily nrd0 rectengular quantile overlay}
+	\end{figure}
+	
+		
+	\subsubsection{Kernel Overlays}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{./version 2/quantile_regressions/daily/kernel_overlays/kernel_tau0.975_nrd0.pdf}
+		\label{fig:Daily kernel nrd0 overlay on .975}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{./version 2/quantile_regressions/weekly/kernel_overlays/kernel_tau0.975_nrd0.pdf}
+		\label{fig:Weekly kernel nrd0 overlay on .975}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{./version 2/quantile_regressions/monthly/kernel_overlays/kernel_tau0.975_nrd0.pdf}
+		\label{fig:Monthly kernel nrd0 overlay on .975}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{./version 2/quantile_regressions/yearly/kernel_overlays/kernel_tau0.975_nrd0.pdf}
+		\label{fig:Yearly kernel nrd0 overlay on .975}
+	\end{figure}
+	
+	\subsubsection{Bandwidth Overlays}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{./version 2/quantile_regressions/daily/bw_overlays/bw_tau0.975_rectangular.pdf}
+		\label{fig:Daily bw rectengular overlay on .975}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{./version 2/quantile_regressions/weekly/bw_overlays/bw_tau0.975_rectangular.pdf}
+		\label{fig:Weely bw rectengular overlay on .975}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{./version 2/quantile_regressions/monthly/bw_overlays/bw_tau0.975_rectangular.pdf}
+		\label{fig:Monthly bw rectengular overlay on .975}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{./version 2/quantile_regressions/yearly/bw_overlays/bw_tau0.975_rectangular.pdf}
+		\label{fig:Yearly bw rectengular overlay on .975}
+	\end{figure}
+	
+	\subsubsection{Non-linear Quantile Estimation comparison against quantile ones }
+	In order to showcase an alternative approach, non-linear second-order polynomial quantile regression was performed to evaluate the performance or lack thereof in factoring in elements such as volatility and market dynamics. However, the second-order polynomial performed worse than the quantile regression, indicating that the added complexity of the polynomial model did not enhance predictive power. This result suggests that while non-linear relationships can be significant, they may also introduce overfitting or fail to capture the essential dynamics of the data effectively, making simpler quantile regression a more reliable choice in this context.
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{./version 2/quantile_regressions/daily/comparison/comparison_tau0.975.pdf}
+		\label{fig:Daily comparison on .975}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{./version 2/quantile_regressions/weekly/comparison/comparison_tau0.975.pdf}
+		\label{fig:Weekly comparison on .975}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{./version 2/quantile_regressions/monthly/comparison/comparison_tau0.975.pdf}
+		\label{fig:Monthly comparison on .975}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{./version 2/quantile_regressions/yearly/comparison/comparison_tau0.975.pdf}
+		\label{fig:Yearly comparison on .975}
+	\end{figure}
+	
+	\newpage
+	
+	\subsection{Standard Errors}
+	
+	\subsubsection{Bootstrap based solution}
+	The authors of the paper recommended the use of bootstrapping techniques, citing Härdle (1990, section 4.2), Simonoff (1996), and Horowitz (2001, section 4.2) as foundational references. As a result, a total of 50 bootstrap estimations were performed for the median regression analysis, leading to the calculation of the corresponding 95\% confidence bands, which are presented below.
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{./version 2/quantile_regressions/daily/confidence_bands/ci_gaussian_SJ.pdf}
+		\label{fig:Daily confidence interval gausian SJ}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{./version 2/quantile_regressions/weekly/confidence_bands/ci_gaussian_SJ.pdf}
+		\label{fig:Weekly confidence interval gausian SJ}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{./version 2/quantile_regressions/monthly/confidence_bands/ci_gaussian_SJ.pdf}
+		\label{fig:Monthly confidence interval gausian SJ}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{./version 2/quantile_regressions/yearly/confidence_bands/ci_gaussian_SJ.pdf}
+		\label{fig:Yearly confidence interval gausian SJ}
+	\end{figure}
+	
+	\subsubsection{Metric based solution}
+	To enhance the objectivity of the analysis for each period and selected kernel, a comparison with the actual Mean Integrated Squared Error (MISE) rankings was conducted. Below are the top-performing quantile regressions, showcasing their corresponding MISE scores for different time periods and configurations.
+	
+	\begin{table}[H]
+		\centering
+		\begin{tabular}{ccc}
+			\hline
+			period  & config                    & mise             \\
+			\hline
+			daily   & gaussian\_nrd0\_0.975     & 97429.72  \\
+			daily   & gaussian\_nrd0\_0.5       & 122200.11 \\
+			daily   & gaussian\_nrd0\_0.75      & 122700.55 \\
+			\hline
+			weekly  & gaussian\_nrd0\_0.975     & 43577.16  \\
+			weekly  & gaussian\_nrd0\_0.75      & 46878.43  \\
+			weekly  & gaussian\_nrd0\_0.5       & 93805.95  \\
+			\hline
+			monthly & gaussian\_SJ\_0.75        & 27661.85  \\
+			monthly & gaussian\_nrd0\_0.75      & 28499.24  \\
+			monthly & gaussian\_ucv\_0.75       & 28850.62  \\
+			\hline			
+			yearly  & epanechnikov\_nrd0\_0.975 & 25895.93  \\
+			yearly  & biweight\_nrd0\_0.975     & 25895.93  \\
+			yearly  & rectangular\_nrd0\_0.975  & 25895.93  \\
+			\hline
+		\end{tabular}
+	\end{table}
+	
+	\newpage
+	
+	\section{Challenges \& findings}
+	The analysis of the MBI10 index, employing Kernel Density Estimation (KDE) and various regression techniques, illuminated several challenges while yielding critical insights into stock market behavior. One of the primary hurdles encountered was the selection of bandwidth, which significantly affects the smoothness of the density estimates. As the sample size varied, particularly when shifting from daily to yearly observations, the resulting bandwidth estimates reflected substantial variation, with larger samples leading to broader distributions that risked obscuring essential details regarding potential outliers and extreme returns. This highlights a delicate balance: while a smaller bandwidth might capture finer nuances, it could also introduce excessive noise, complicating the analysis further.\\
+	
+	
+	Additionally, the distribution characteristics observed in the data were intriguing. The findings confirmed that with larger sample sizes, KDE tends to converge more reliably to the underlying distribution, providing clearer insights into extreme outcomes. However, in smaller sample contexts, such as yearly returns, both bandwidth and kernel choices exerted comparable influences on the KDE, questioning the viability of established theoretical expectations that assume normality.\\
+	
+	
+	The study also revealed that non-parametric methods offered significant advantages over traditional parametric approaches in capturing the complexities of market dynamics. Specifically, local linear regressions maintained robustness despite variable sensitivity to bandwidth and kernel choices across different time frames. Interestingly, the simpler quantile regression models outperformed more complex polynomial constructs, indicating that added intricacy might not necessarily translate into enhanced predictive power. This underscores a vital conclusion: in financial analyses, maintaining simplicity can often lead to more reliable outcomes.\\
+	
+	
+	In applying bootstrapping techniques for median regression analysis, the research underscored the uncertainty surrounding confidence intervals, especially within less predictable small samples. The resulting 95\% confidence bands proved essential in establishing a clearer picture of the risk landscape within the MBI10 returns. Altogether, these findings offer valuable insights into the intricate dynamics of stock returns, providing crucial guidance for investors aiming to navigate risk management and make informed decisions in their investment strategies. The lessons learned from this analysis not only contribute to a deeper understanding of the Macedonian Stock Exchange but also resonate broadly within the field of financial analysis.
+		
+	\newpage
+	
+\end{document}

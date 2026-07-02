@@ -1,0 +1,19 @@
+"group","horizon","mult_slack","mult_exp","diff","pval_diff"
+"Balkan: u > P25",4,1.957,2.725,-0.768,0.305
+"Balkan: u > P25",8,1.236,1.11,0.126,0.876
+"Balkan: u > P25",12,1.209,1.75,-0.541,0.319
+"Balkan: u > P50",4,2.174,2.183,-0.009,0.986
+"Balkan: u > P50",8,1.628,0.9,0.728,0
+"Balkan: u > P50",12,1.974,0.924,1.051,0
+"Balkan: u > P75",4,1.259,2.248,-0.989,0.057
+"Balkan: u > P75",8,0.71,1.385,-0.675,0.169
+"Balkan: u > P75",12,1.658,1.235,0.423,0.423
+"Advanced Economies: u > P25",4,3.194,2.276,0.918,0.728
+"Advanced Economies: u > P25",8,2.339,1.479,0.86,0.713
+"Advanced Economies: u > P25",12,-0.31,0.603,-0.914,0.834
+"Advanced Economies: u > P50",4,2.611,2.312,0.299,0.88
+"Advanced Economies: u > P50",8,1.988,1.108,0.88,0.595
+"Advanced Economies: u > P50",12,1.041,0.661,0.38,0.769
+"Advanced Economies: u > P75",4,2.477,2.387,0.09,0.968
+"Advanced Economies: u > P75",8,1.715,1.392,0.323,0.884
+"Advanced Economies: u > P75",12,0.341,0.827,-0.485,0.785

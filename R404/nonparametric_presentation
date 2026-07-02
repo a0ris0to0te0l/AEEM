@@ -1,0 +1,125 @@
+\documentclass{beamer} % Use handout to get rid of repeated slides
+\usetheme{AnnArbor}
+\usecolortheme{crane}
+\usefonttheme{professionalfonts}
+\usepackage{mathpazo}
+\usepackage{listings}
+
+% Define colors
+\definecolor{myred}{RGB}{163,0,0}
+\definecolor{ttcolor}{RGB}{0,0,1}%{RGB}{163,0,0}
+\definecolor{mygray}{RGB}{248,249,250} 
+\definecolor{mygreen1}{RGB}{0,96,0}
+\definecolor{mygreen2}{RGB}{229,239,229}
+
+\setbeamertemplate{theorem}[ams style]
+\setbeamertemplate{theorems}[numbered]
+
+\usepackage{etoolbox}
+\undef{\definition}
+\theoremstyle{definition}
+\newtheorem{definition}{\translate{Definition}}
+\hypersetup{urlcolor=blue}
+
+\setbeamercolor{block title}{fg=white,bg=mygreen1}
+\setbeamercolor{block body}{fg=black,bg=mygreen2}
+
+\lstdefinestyle{rstyle}%
+{language=[LaTeX]TeX,
+	basicstyle=\footnotesize\ttfamily,
+	backgroundcolor = \color{mygray},
+	commentstyle=\slshape\color{green!50!black},
+	keywordstyle=\color{blue},
+	identifierstyle=\color{blue},
+	stringstyle=\color{orange},
+	%escapechar=\#,
+	rulecolor = \color{mygray}, 
+	showstringspaces = false,
+	showtabs = false,
+	tabsize = 2,
+	emphstyle=\color{red},
+	frame = single} 
+
+\begin{document}
+	\title[Short Title]{Some Very Long Title to Appear on the Title Page}
+	\subtitle[Shorter Version?]{The Subtitle is Also Lengthy (for the Title Page)}
+	\author[Riste Petrov]{The Author of the Presentation \\ \href{mailto:anybody@email.com}{anybody@email.com}}
+	\institute[Sofia University]{Sofia University St. Kliment Ohridski}
+	\titlegraphic{\includegraphics[scale=0.5]{8.1-logo SU ENG White horizontal.pdf}}
+	\date{\today}
+	
+	\begin{frame}[fragile]
+		\titlepage
+	\end{frame}
+	
+	\begin{frame}[fragile]
+		\frametitle{Contents}
+		\tableofcontents[pausesections]
+	\end{frame}
+	
+	\section{Section One}
+	\subsection{The First Subsection}
+	\begin{frame}[fragile]
+		\frametitle{Slide Title}
+		\framesubtitle{Some Subtitle}
+		\begin{itemize}
+			\item My presentation starts here...
+			
+			\item 
+		\end{itemize}
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Other Slide Title}
+		\begin{enumerate}
+			\item 
+		\end{enumerate}
+	\end{frame}
+	
+	\section{Section Two}
+	\subsection{Some Other Subsection}
+	\begin{frame}[fragile]
+		\frametitle{New Slide}
+		\begin{itemize}
+			\item 
+		\end{itemize}
+	\end{frame}
+	
+	\begin{frame}[fragile]
+		\frametitle{Transitions}
+		\begin{itemize}[<+->]
+			\item Bullet appearing first
+			
+			\item Bullet appearing with delay
+			
+			\item Still another bullet appearing
+		\end{itemize}
+	\end{frame}
+	
+	\begin{frame}[fragile]
+		\frametitle{Two Columns}
+		\begin{columns}[T]
+			\column{0.4\textwidth}
+			\column{0.6\textwidth}
+			\begin{itemize}
+				\item This is a picture of nature
+			\end{itemize}
+		\end{columns}
+	\end{frame}
+	
+	\begin{frame}[fragile]
+		\frametitle{}
+		\begin{theorem}[Pythagoras]
+			$ c^{2} = a^{2} + b^{2} $
+		\end{theorem}
+		
+		\begin{definition}
+			A confidence interval is...
+		\end{definition}
+		
+		\begin{lstlisting}[style=rstyle, breaklines]
+			\usepackage{beamer}
+		\end{lstlisting}
+	\end{frame}
+	
+\end{document}

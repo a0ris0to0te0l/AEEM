@@ -1,0 +1,10 @@
+\frametitle{Similarity to Value at Risk (VaR)}
+		\framesubtitle{Theory}
+		What actually VaR is, and how it is similar?
+		\begin{itemize}
+			\item Value at Risk (VaR) is a financial metric used to assess the potential loss in value of an asset or portfolio over a defined period for a given confidence interval. The concept is typically applied in risk management to quantify the level of financial risk within a firm or investment portfolio.
+			\item One tailed test, usually set at 0.05 or 0.01 percentile.
+		\end{itemize}
+		\begin{theorem}[Value at Risk]
+			$ \text{VaR}_{\alpha} = -\inf\{ x \in \mathbb{R} : P(X \leq x) \geq \alpha \}$
+		\end{theorem}

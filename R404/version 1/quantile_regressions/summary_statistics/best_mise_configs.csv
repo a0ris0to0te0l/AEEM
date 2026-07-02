@@ -1,0 +1,16 @@
+"period","config","mise"
+"daily","gaussian_nrd0_0.975",97429.7205121525
+"daily","gaussian_ucv_0.975",97429.7205121525
+"daily","gaussian_nrd0_0.5",122200.106732866
+"daily","gaussian_ucv_0.5",122200.106732866
+"monthly","gaussian_SJ_0.75",27661.8488701146
+"monthly","gaussian_nrd0_0.75",28499.2368715496
+"monthly","gaussian_ucv_0.75",28850.6169903884
+"weekly","gaussian_nrd0_0.975",43577.1639427803
+"weekly","gaussian_ucv_0.975",43577.1639427803
+"weekly","gaussian_nrd0_0.75",46878.432254122
+"weekly","gaussian_ucv_0.75",46878.432254122
+"yearly","epanechnikov_nrd0_0.975",25895.927703811
+"yearly","epanechnikov_ucv_0.975",25895.927703811
+"yearly","biweight_nrd0_0.975",25895.927703811
+"yearly","biweight_ucv_0.975",25895.927703811

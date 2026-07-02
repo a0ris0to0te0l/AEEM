@@ -1,0 +1,5 @@
+\beamer@sectionintoc {1}{Introduction}{3}{0}{1}
+\beamer@subsectionintoc {1}{1}{Authors}{3}{0}{1}
+\beamer@subsectionintoc {1}{2}{Common connection}{4}{0}{1}
+\beamer@sectionintoc {2}{Research}{6}{0}{2}
+\beamer@sectionintoc {3}{Q\&A}{11}{0}{3}

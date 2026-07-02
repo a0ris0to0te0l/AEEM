@@ -1,0 +1,5 @@
+"period","config","cv_score"
+"daily","daily_biweight_ucv_0.500",37.6615762420377
+"monthly","monthly_biweight_SJ_0.500",94.4172357682164
+"weekly","weekly_biweight_ucv_0.500",56.6670152799253
+"yearly","yearly_triangular_nrd0_0.500",250.673347583741

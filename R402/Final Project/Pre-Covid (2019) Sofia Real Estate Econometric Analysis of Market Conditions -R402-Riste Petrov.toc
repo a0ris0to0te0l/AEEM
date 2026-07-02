@@ -1,0 +1,45 @@
+\contentsline {section}{\numberline {1}Introduction}{3}{section.1}%
+\contentsline {section}{\numberline {2}Base Dataset \& Data Manipulation}{4}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Size Type}{4}{subsection.2.1}%
+\contentsline {subsubsection}{\numberline {2.1.1}Base size type}{4}{subsubsection.2.1.1}%
+\contentsline {subsubsection}{\numberline {2.1.2}Modifications to Size Type}{5}{subsubsection.2.1.2}%
+\contentsline {subsection}{\numberline {2.2}Neighborhood}{5}{subsection.2.2}%
+\contentsline {subsubsection}{\numberline {2.2.1}Quartid- base dataset}{5}{subsubsection.2.2.1}%
+\contentsline {subsubsection}{\numberline {2.2.2}Neighborhood - management}{5}{subsubsection.2.2.2}%
+\contentsline {subsubsection}{\numberline {2.2.3}Neighborhood Location \& Proximity to the Center}{6}{subsubsection.2.2.3}%
+\contentsline {subsubsection}{\numberline {2.2.4}Metro Availability}{7}{subsubsection.2.2.4}%
+\contentsline {subsubsection}{\numberline {2.2.5}Luxurious Locations}{7}{subsubsection.2.2.5}%
+\contentsline {subsubsection}{\numberline {2.2.6}Attractive Park Proximity}{8}{subsubsection.2.2.6}%
+\contentsline {subsubsection}{\numberline {2.2.7}Kindergarten Availability}{8}{subsubsection.2.2.7}%
+\contentsline {subsubsection}{\numberline {2.2.8}Shopping Malls}{9}{subsubsection.2.2.8}%
+\contentsline {subsubsection}{\numberline {2.2.9}Other possible variables}{9}{subsubsection.2.2.9}%
+\contentsline {subsection}{\numberline {2.3}Price (in Euro)}{9}{subsection.2.3}%
+\contentsline {subsubsection}{\numberline {2.3.1}Base dataset for the Price variable}{9}{subsubsection.2.3.1}%
+\contentsline {subsubsection}{\numberline {2.3.2}Modifications on the Price variable}{10}{subsubsection.2.3.2}%
+\contentsline {subsection}{\numberline {2.4}Area}{10}{subsection.2.4}%
+\contentsline {subsubsection}{\numberline {2.4.1}Area - management}{11}{subsubsection.2.4.1}%
+\contentsline {subsection}{\numberline {2.5}Euros per Square Meter}{11}{subsection.2.5}%
+\contentsline {subsubsection}{\numberline {2.5.1}Euros per Square Meter - Base dataset}{11}{subsubsection.2.5.1}%
+\contentsline {subsubsection}{\numberline {2.5.2}Euros per Square Meter - Management}{12}{subsubsection.2.5.2}%
+\contentsline {subsection}{\numberline {2.6}Construction type}{14}{subsection.2.6}%
+\contentsline {subsubsection}{\numberline {2.6.1}Base dataset - Construction type variable}{14}{subsubsection.2.6.1}%
+\contentsline {subsection}{\numberline {2.7}Year}{15}{subsection.2.7}%
+\contentsline {subsubsection}{\numberline {2.7.1}Base dataset - Year}{15}{subsubsection.2.7.1}%
+\contentsline {subsubsection}{\numberline {2.7.2}Year - management}{16}{subsubsection.2.7.2}%
+\contentsline {subsection}{\numberline {2.8}Floor}{16}{subsection.2.8}%
+\contentsline {subsection}{\numberline {2.9}Heating}{17}{subsection.2.9}%
+\contentsline {subsection}{\numberline {2.10}Listing time}{18}{subsection.2.10}%
+\contentsline {section}{\numberline {3}Regressions \& Model}{19}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Structure of the Model}{19}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Logit Regressions for Overpriced \& Underpriced}{19}{subsection.3.2}%
+\contentsline {subsubsection}{\numberline {3.2.1}Overpriced formula}{20}{subsubsection.3.2.1}%
+\contentsline {subsubsection}{\numberline {3.2.2}Overpriced regression}{20}{subsubsection.3.2.2}%
+\contentsline {subsubsection}{\numberline {3.2.3}Underpriced formula}{21}{subsubsection.3.2.3}%
+\contentsline {subsubsection}{\numberline {3.2.4}Underpriced regression}{21}{subsubsection.3.2.4}%
+\contentsline {subsubsection}{\numberline {3.2.5}Disclosure of limitations of the models}{22}{subsubsection.3.2.5}%
+\contentsline {subsubsection}{\numberline {3.2.6}Summary for Logit regressions}{23}{subsubsection.3.2.6}%
+\contentsline {subsection}{\numberline {3.3}Structural Model Regression versus Non-Structural Model Regression}{23}{subsection.3.3}%
+\contentsline {subsubsection}{\numberline {3.3.1}Specification differences}{23}{subsubsection.3.3.1}%
+\contentsline {subsubsection}{\numberline {3.3.2}Econometric problems}{24}{subsubsection.3.3.2}%
+\contentsline {subsubsection}{\numberline {3.3.3}Summary}{25}{subsubsection.3.3.3}%
+\contentsline {section}{\numberline {4}Conclusion}{26}{section.4}%

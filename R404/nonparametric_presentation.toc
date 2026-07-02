@@ -1,0 +1,12 @@
+\beamer@sectionintoc {1}{Introduction}{3}{0}{1}
+\beamer@subsectionintoc {1}{1}{Approach}{3}{0}{1}
+\beamer@subsectionintoc {1}{2}{Theory}{9}{0}{1}
+\beamer@sectionintoc {2}{Empirical Approach}{15}{0}{2}
+\beamer@subsectionintoc {2}{1}{Bandwidth calculation}{15}{0}{2}
+\beamer@subsectionintoc {2}{2}{Kernel Density Estimation}{16}{0}{2}
+\beamer@subsectionintoc {2}{3}{Local Linear Regressions}{24}{0}{2}
+\beamer@subsectionintoc {2}{4}{Quantile Regressions}{28}{0}{2}
+\beamer@subsectionintoc {2}{5}{Non-linear Quantile Regression vs Quantile Regression Estimation}{32}{0}{2}
+\beamer@subsectionintoc {2}{6}{MISE analysis}{36}{0}{2}
+\beamer@sectionintoc {3}{Thank you for your attention!}{38}{0}{3}
+\beamer@subsectionintoc {3}{1}{Q\&A}{38}{0}{3}
